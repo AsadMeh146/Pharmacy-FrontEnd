@@ -18,6 +18,7 @@ export class SignUpComponent implements OnInit {
   public  password=""
   public address=""
   public phone=""
+  public role=""
   async handleSubmit(){
     this.user={
       userName:this.userName,
@@ -25,6 +26,7 @@ export class SignUpComponent implements OnInit {
       password:this.password,
       address:this.address,
       phone:this.phone,
+      role:"Customer"
     }
     this.result=await lastValueFrom(this.SignUpService.registerUserApi(this.user))
     if(this.result){
