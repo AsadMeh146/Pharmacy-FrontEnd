@@ -1,0 +1,33 @@
+
+<div class="container-fluid">
+    <div class="signInBlock">
+        <h1 class="signIn">Sign In</h1>
+        <form action="" (ngSubmit)="formSubmission()">
+            <div class="m-4 rowContainer">
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading">Email</h6>
+                        <input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputemail" aria-describedby="emailHelp" placeholder="Enter Email">
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading">Password</h6>
+                        <input type="password" [(ngModel)]="password" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputpassword" aria-describedby="passwordHelp" placeholder="Enter Password">
+                    </div>
+                </div>
+                
+                <div class="row myRow" >
+                    <div class="col-md-12 buttonBlock">
+                        <button type="submit" class="btn btn-outline-dark mt-4 mb-4" >Sign In</button>
+                    </div>                
+                </div>
+                
+            </div>
+        </form>
+        <p class="text-center">
+            Not a member?
+            <a data-toggle="tab" routerLink="/signup">Sign Up</a>
+          </p>
+    </div>
+</div>

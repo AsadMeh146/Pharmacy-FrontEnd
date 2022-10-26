@@ -1,0 +1,45 @@
+.signInBlock{
+    margin-left: 27%;
+    margin-right: 27%;
+    background-color: whitesmoke;
+    margin-top: 100px;
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 20px;
+    
+}
+.rowContainer
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signIn{
+    margin-top: 20px;
+}
+.myRow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    text-align: left;
+}
+.heading{
+    font-size: 15px;
+    font-weight: normal;
+}
+.buttonBlock{
+    text-align: center;
+}
+.signUpBlock
+{
+    text-align: center;
+}
+.text-center
+{
+    padding-bottom: 20px;
+}
+.signUpBlock
+{
+    font-weight: bold;
+}
