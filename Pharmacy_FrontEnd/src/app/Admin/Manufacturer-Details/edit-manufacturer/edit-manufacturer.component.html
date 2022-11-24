@@ -1,0 +1,55 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let manufacturer of manufacturers" >
+      <td>{{manufacturer.name}}</td>
+      <td>{{manufacturer.contact}}</td>
+      <td>{{manufacturer.address}}</td>
+      <td>{{manufacturer.email}}</td>
+      <input type="button" (click) = "deleteManufacturers(manufacturer._id)" value = "Delete" class = "btn btn-outline-danger">
+      <input type="button" (click) = "setManufacturerValues(manufacturer._id,manufacturer.name,manufacturer.contact,manufacturer.address,manufacturer.email)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Manufacturer</h4>
+          </div>
+          <form action="" ngNativeValidate (ngSubmit)="updateManufacturer()">
+              <div class="modal-body">
+                  <div class=" form-group">
+                      <label class="focus-label">Name</label>
+                      <input [(ngModel)]="name" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="InputName" aria-describedby="nameHelp" placeholder="Enter Name" required>
+                  </div>
+                  <div class=" form-group">
+                    <label class="focus-label">Email</label>
+                    <input [(ngModel)]="email" [ngModelOptions]="{standalone:true}" type="email" class="form-control" id="Inputemail" aria-describedby="emailHelp" placeholder="Enter Email" required>
+                </div>
+                <div class=" form-group">
+                  <label class="focus-label">Contact No.</label>
+                  <input [(ngModel)]="contact" [ngModelOptions]="{standalone:true}" type="tel" class="form-control" id="Inputconact" aria-describedby="contactHelp" placeholder="Enter Contact" required>
+              </div>
+              <div class=" form-group">
+                <label class="focus-label">Address</label>
+                <input [(ngModel)]="address" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="Inputaddress" aria-describedby="addressHelp" placeholder="Enter Address" required>
+            </div>
+            </div>
+              <div class="modal-footer">
+                  <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
