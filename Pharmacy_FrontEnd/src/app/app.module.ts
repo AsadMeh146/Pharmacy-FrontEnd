@@ -11,6 +11,8 @@ import { AddManufacturerComponent } from './Admin/Manufacturer-Details/add-manuf
 import { EditManufacturerComponent } from './Admin/Manufacturer-Details/edit-manufacturer/edit-manufacturer.component';
 import { AddShipperComponent } from './Admin/Shipper-Details/add-shipper/add-shipper.component';
 import { EditShipperComponent } from './Admin/Shipper-Details/edit-shipper/edit-shipper.component';
+import {AddpharmacyComponent} from './Owner/pharmacy/addpharmacy/addpharmacy.component';
+import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { EditShipperComponent } from './Admin/Shipper-Details/edit-shipper/edit-
     EditManufacturerComponent,
     AddShipperComponent,
     EditShipperComponent,
+    AddpharmacyComponent,
+    ViewpharmacyComponent
   ],
   imports: [
     BrowserModule,
