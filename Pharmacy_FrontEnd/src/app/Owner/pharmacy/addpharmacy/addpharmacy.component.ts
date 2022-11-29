@@ -11,12 +11,10 @@ export class AddpharmacyComponent implements OnInit {
   constructor(public AddPharmcayService:AddPharmacyDetailsService,private router:Router) { }
   pharmacy:any
   result:any
-  // public Id=""
   public Location=""
   public  ContactNumber=""
   async handleSubmit(){
     this.pharmacy={
-      // Id:this.Id,
       Location:this.Location,
       ContactNumber:this.ContactNumber,
      
@@ -24,7 +22,6 @@ export class AddpharmacyComponent implements OnInit {
     this.result= await lastValueFrom(this.AddPharmcayService.addPharmacyApi(this.pharmacy))
     if(this.result){
       alert("Pharmacy Added successfully")
-      // this.router.navigate([''])
     }
     else{
       alert("Ooops Error")

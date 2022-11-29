@@ -16,15 +16,15 @@ export class AddPharmacyDetailsService {
   
   getPharmacyApi()
   {
-    return this.http.get(`${environment.baseUrl}/ViewPharmacyInfo`)
+    return this.http.get(`${environment.baseUrl}/view-pharmacy`)
   }
   
   updatePharmacyApi(Id:any,pharmacy:any){
-    return this.http.put(`${environment.baseUrl}/ViewPharmacyInfo/${Id}`,pharmacy)
+    return this.http.put(`${environment.baseUrl}/view-pharmacy/${Id}`,pharmacy)
   }
 
   deletePharmacyApi(Id:any){
-    return this.http.delete(`${environment.baseUrl}/ViewPharmacyInfo/${Id}`)
+    return this.http.delete(`${environment.baseUrl}/view-pharmacy/${Id}`)
   }
   
 }
