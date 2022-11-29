@@ -1,0 +1,65 @@
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Category</th>
+      <th scope="col">Strength</th>
+      <th scope="col">Description</th>
+      <th scope="col">Manufacturer</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of products" >
+      <td>{{product.name}}</td>
+      <td>{{product.category.Name}}</td>
+      <td>{{product.strength}}</td>
+      <td>{{product.description}}</td>
+      <td>{{product.manufacturerName}}</td>
+      <input type="button" (click) = "deleteProduct(product._id)" value = "Delete" class = "btn btn-outline-danger">
+      <input type="button" (click) = "setProductValues(product._id,product.name,product.category.Name,product.strength,product.description,product.manufacturerName,product.pharmacyId)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Product</h4>
+          </div>
+          <form action="" ngNativeValidate (ngSubmit)="updateProduct()">
+              <div class="modal-body">
+                  <div class=" form-group">
+                      <label class="focus-label">Name</label>
+                      <input [(ngModel)]="name" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="Inputname" aria-describedby="nameHelp" placeholder="Enter Name" required>
+                  </div>
+                  <div class=" form-group">
+                    <label class="focus-label">Category</label>
+                    <select [(ngModel)]="categoryName" [ngModelOptions]="{standalone:true}"  class="form-select" aria-label="Default elect example"id="Inputmanufacturer">
+                      <option *ngFor="let productCategory of productCategories" [value]="productCategory.Name" [selected]="productCategory.name==categoryName">{{productCategory.Name}}</option>
+                    </select>
+                </div>
+                <div class=" form-group">
+                  <label class="focus-label">Manufacturer Name</label>
+                  <select [(ngModel)]="manufacturerName" [ngModelOptions]="{standalone:true}"  class="form-select" aria-label="Default elect example"id="Inputmanufacturer">
+                    <option *ngFor="let manufacturer of manufacturers" [value]="manufacturer.name" [selected]="manufacturer.name==manufacturerName">{{manufacturer.name}}</option>
+                  </select>
+              </div>
+              <div class=" form-group">
+                <label class="focus-label">Description</label>
+                <input [(ngModel)]="description" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="Inputdescription" aria-describedby="addressHelp" placeholder="Enter Description" required>
+            </div>
+            <div class=" form-group">
+              <label class="focus-label">Strength</label>
+              <input [(ngModel)]="strength" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="Inputstrength" aria-describedby="addressHelp" placeholder="Enter Strength">
+          </div>
+            </div>
+              <div class="modal-footer">
+                  <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

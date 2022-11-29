@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="signUpBlock">
+      <p id="label_size"> <b>Admin / </b> Add Product </p>
+      <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+          <div class="m-4">
+              <div class="row myRow" >
+                  <div class="col-md-6">
+                      <h6 class="heading">Name</h6>
+                      <input [(ngModel)]="name" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="Inputname" aria-describedby="nameHelp" placeholder="Enter Name" required>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="heading">Manufacturer</h6>
+                    <select [(ngModel)]="manufacturerName" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="manufacturer-id">
+                      <option *ngFor="let manufacturer of manufacturers" [ngValue]="manufacturer.name">{{manufacturer.name}}</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="row myRow" >
+                <div class="col-md-6">
+                  <h6 class="heading">Category</h6>
+                  <select [(ngModel)]="category" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="manufacturer-id">
+                    <option *ngFor="let productcategory of productCategories" [ngValue]="productcategory._id">{{productcategory.Name}}</option>
+                  </select>
+                </div>
+                  <div class="col-md-6">
+                      <h6 class="heading">Description</h6>
+                      <input [(ngModel)]="description" [ngModelOptions]="{standalone:true}" type="tel" class="form-control" id="Inputdescription" aria-describedby="contactHelp" placeholder="Enter Description" required>
+                  </div>
+              </div>
+              <div class="row myRow" >
+                  <div class="col-md-6">
+                      <h6 class="heading">Strength</h6>
+                      <input [(ngModel)]="strength" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="Inputstrength" aria-describedby="contactHelp" placeholder="Enter Strength">
+                  </div>
+              </div>
+              <div class="row myRow" >
+                  <div class="col-md-12 buttonBlock">
+                    <button class="btn btn-outline-primary mt-4 mb-4">Add</button>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+
+
+

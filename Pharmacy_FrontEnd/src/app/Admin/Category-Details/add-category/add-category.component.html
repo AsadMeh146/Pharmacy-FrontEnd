@@ -1,0 +1,47 @@
+<div class="container-fluid">
+  <div class="signUpBlock">
+      <p id="label_size"> <b>Admin / </b> Manage Category </p>
+      <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+          <div class="m-4">
+              <div class="row myRow" >
+                  <div class="col-md-6">
+                      <h6 class="heading">Name</h6>
+                      <input [(ngModel)]="name" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" required>
+                  </div>
+                  <div class="col-md-6">
+                      <h6 class="heading">Category</h6>
+                      <select [(ngModel)]="category" [ngModelOptions]="{standalone:true}"  class="form-select" aria-label="Default elect example"id="Inputmanufacturer">
+                        <option *ngFor="let category of setCategories" [value]="category.category">{{category.name}}</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row myRow" >
+                  <div class="col-md-12 buttonBlock">
+                    <button class="btn btn-outline-primary mt-4 mb-4">Add</button>
+                  </div>
+              </div>
+          </div>
+      </form>
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let category of setCategories" >
+              <td>{{category.name}}</td>
+              <td>{{category.category}}</td>
+              <input type="button" value = "Delete" class = "btn btn-outline-danger">
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+
+
+

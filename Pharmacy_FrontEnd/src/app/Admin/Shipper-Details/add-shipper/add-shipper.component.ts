@@ -16,6 +16,7 @@ export class AddShipperComponent implements OnInit {
   user:any
   result:any
   manufacturers:any
+
   public name=""
   public email=""
   public address=""
@@ -26,9 +27,9 @@ export class AddShipperComponent implements OnInit {
     this.manufacturers=await lastValueFrom(this.ManufacturerService.getManufacturerApi())
   };
 
+
   async handleSubmit(){
-    // this.manufacturerId = (<HTMLInputElement>document.getElementById('manufacturer-id')).value
-    // alert(this.manufacturerId)
+
     this.user={
       name:this.name,
       email:this.email,
