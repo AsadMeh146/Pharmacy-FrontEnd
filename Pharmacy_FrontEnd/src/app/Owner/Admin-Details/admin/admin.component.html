@@ -1,0 +1,112 @@
+<div class="container-fluid">
+    <div class="signUpBlock">
+       
+                <div class="container">
+                    <div class="col-md-2">
+                        <a class="text-white opacity-50" href="javascript:;"><b style="color: Grey;">Pharmacy/</b><b style="color: Black;">Owner</b></a>
+                    </div>
+                </div>
+               
+            <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 15px  ;color: Blue;  ">Manage Admins</b></h6>
+            
+        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+            <div class="m-4">
+                <div class="row myRow" >
+                    <div class="col-md-4">
+                        <h6 class="heading">Name</h6>
+                        <input [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" type="Name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" required>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="heading">Pin</h6>
+                        <input [(ngModel)]="PIN" [ngModelOptions]="{standalone:true}" type="password" class="form-control" id="exampleInputpassword" aria-describedby="passwordHelp" placeholder="Enter Pin" required>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="heading">CNIC.</h6>
+                        <input [(ngModel)]="CNIC" [ngModelOptions]="{standalone:true}" type="cnic" class="form-control" id="exampleInputCNIC" aria-describedby="CNICHelp" placeholder="Enter CNIC" required>
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div class="col-md-4">
+                        <h6 class="heading">Address</h6>
+                        <input [(ngModel)]="Address" [ngModelOptions]="{standalone:true}" type="Address" class="form-control" id="exampleInputAddress" aria-describedby="AddressHelp" placeholder="Enter Address" required>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="heading">Salary</h6>
+                        <input [(ngModel)]="Salary" [ngModelOptions]="{standalone:true}" type="Salary" class="form-control" id="exampleInputSalary" aria-describedby="SalaryHelp" placeholder="Enter Salary" required>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <h6 class="heading">Designation</h6>
+                        <select [(ngModel)]="Designation" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="adminid">
+                          <option *ngFor="let designation of designations" [ngValue]="designation._id">{{designation.Name}}</option>
+                        </select>
+                      </div> -->
+                      <div class="col-md-4">
+                        <h6 class="heading">Email</h6>
+                        <input [(ngModel)]="Email" [ngModelOptions]="{standalone:true}" type="Email" class="form-control" id="exampleInputEmail" aria-describedby="EmailHelp" placeholder="Enter Email" required>
+                    </div>
+                </div>
+            
+                <div class="row myRow" >
+                    
+                    
+                    <div class="col-md-4">
+                        <h6 class="heading">Pharmacy</h6>
+                        <select [(ngModel)]="PharmacyId" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="pharmacy-id">
+                          <option *ngFor="let pharmac of pharmacies" [ngValue]="pharmac._id">{{pharmac.Location}}</option>
+                        </select>
+                      </div>
+                    <!-- <div class="col-md-6">
+                        <h6 class="heading">Status</h6>
+                        <select [(ngModel)]="Status" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="status-id">
+                          <option *ngFor="let status of statuses" [ngValue]="status._id">{{status.Name}}</option>
+                        </select>
+                      </div> -->
+                      <div class="col-md-4">
+                        <h6 class="heading">Contact Number</h6>
+                        <input [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" type="ContactNumber" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="heading">Select Gender</h6>
+                          <select class="form-control select" [(ngModel)]="Gender" [ngModelOptions]="{standalone:true}" name="Gender" >
+                              <option>Male</option>
+                              <option>Female</option>
+                              </select>
+                    </div>
+                   
+                </div>
+
+                <div class="row myRow" >
+                    <div class="col-md-4">
+                        <h6 class="heading">Hire Date</h6>
+                        <input class="form-control datetimepicker" [(ngModel)]="HireDate" [ngModelOptions]="{standalone:true}" type="date" value="20/08/2019" name="Hire Date">
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="heading">Date Of Birth</h6>
+                        <input class="form-control datetimepicker" [(ngModel)]="DateOfBirth" [ngModelOptions]="{standalone:true}" type="date" value="20/08/2019" name="Date Of Birth">
+                    </div>
+                    
+                    <div class="col-md-4" >
+                        <div>
+                            <h6 class="heading" style="font-size:large;">Images</h6>
+                            <input type="file"    name = "file" [(ngModel)]="image" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputimage" aria-describedby="imageHelp" placeholder="Select file">
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row myRow" >
+                    <div class="col-md-12 buttonBlock">
+                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
+                    </div>                
+                </div>
+            </div>
+        </form>
+        <!-- <p class="text-center mb-4">
+            Already a member
+            <a data-toggle="tab" routerLink="">Sign In</a>
+          </p> -->
+    </div>
+</div>
+

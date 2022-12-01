@@ -1,0 +1,52 @@
+<div class="container">
+<table class="table mt-3">
+    <thead >
+      <tr>
+      <th scope="col">Location</th>
+      <th scope="col">ContactNumber</th>
+      <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of PharmacyData">
+        <td>{{row.Location}}</td>
+        <td>{{row.ContactNumber}}</td>
+        <td>
+          <button class="btn btn-info " (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-bs-toggle="modal" data-bs-target="#updateModal" value = "Update">Edit</button>
+          <button class="btn btn-danger " (click) = "deletePharmacyData(row._id)" value="Delete" >Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+ 
+</div>
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Edit Pharmacy Data</h4>
+          </div>
+          <form action="" ngNativeValidate (ngSubmit)="updatePharmacyDetails()">
+              <div class="modal-body">
+                  <div class=" form-group">
+                      <label class="focus-label">Id</label>
+                      <input [(ngModel)]="Id" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="InputId" aria-describedby="IdHelp" placeholder="Enter Id" required>
+                  </div>
+                  <div class=" form-group">
+                    <label class="focus-label">Location</label>
+                    <input [(ngModel)]="Location" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="InputLocation" aria-describedby="LocationHelp" placeholder="Enter Location" required>
+                </div>
+                <div class=" form-group">
+                  <label class="focus-label">ContactNumber</label>
+                  <input [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" type="tel" class="form-control" id="InputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+              </div>
+              
+            </div>
+              <div class="modal-footer">
+                  <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

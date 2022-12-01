@@ -1,0 +1,56 @@
+.Name{
+    margin-left: 27%;
+    margin-right: 27%;
+    margin-top: 75px;
+    margin-bottom: 10px;
+}
+.AddPharmacy{
+    margin-left: 27%;
+    margin-right: 27%;
+    background-color: whitesmoke;
+    /* margin-top: 100px; */
+    border-radius: 10px;
+    text-align: center;
+    padding-top: 20px;
+    /* background-image: url('assets/Images/images.jpg'); */
+    /* background-image: url("/assets/Images/images.jpg");
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; */
+}
+.rowContainer
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.myRow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.buttonBlock{
+    text-align: center;
+}
+
+.text-center
+{
+    padding-bottom: 20px;
+}
+
+.buttonBlock{
+   
+    font-weight: bold;
+   
+}
+.img-responsive{
+    background-size: 100 100;
+}

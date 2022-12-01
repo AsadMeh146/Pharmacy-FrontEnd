@@ -1,0 +1,55 @@
+<div class="container">
+    <table class="table mt-3">
+        <thead >
+          <tr>
+          <th scope="col">Email</th>
+          <th scope="col">Purpose</th>
+          <th scope="col">Amount Requested</th>
+          <th scope="col">Apply Date</th>
+          <th scope="col">Loan Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of loanData">
+            <td>{{row.email}}</td>
+            <td>{{row.Purpose}}</td>
+            <td>{{row.AmountRequested}}</td>
+            <td>{{row.ApplyDate}}</td>
+            <td>{{row.loanRequests.Name}}</td>
+            
+            <input type="button" (click) = "setloanData(row._id,row.loanRequests.Name)" data-toggle="modal" data-target="#updateModal" value = "Change Status" class = "btn btn-outline-primary">
+            <!-- <td>
+              <button class="btn btn-info " (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-bs-toggle="modal" data-bs-target="#updateModal" value = "Update">Edit</button>
+              <button class="btn btn-danger " (click) = "deletePharmacyData(row._id)" value="Delete" >Delete</button>
+          </td> -->
+        </tr>
+        </tbody>
+      </table>
+     
+    </div>
+
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Loan Approvement</h4>
+              </div>
+              <form action="" ngNativeValidate (ngSubmit)="updateloanData()">
+                  <div class="modal-body">
+                      <div class=" form-group">
+                        <label class="focus-label">Loan Status</label>
+    
+                        <select [(ngModel)]="loanstatus" [ngModelOptions]="{standalone:true}"  class="form-select" aria-label="Default elect example"id="Inputmanufacturer">
+                          <option *ngFor="let loanT of loanRequests" [value]="loanT.Name" [selected]="loanT.Name==loanstatus">{{loanT.Name}}</option>
+                        </select>
+                    </div>
+                </div>
+                  <div class="modal-footer">
+                      <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+    </div>
+    
+    

@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="signUpBlock">
+       
+                <div class="container">
+                    <div class="col-md-2">
+                        <a class="text-white opacity-50" href="javascript:;"><b style="color: Grey;">Pharmacy</b></a>
+                    </div>
+                </div>
+               
+            <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 15px  ;color: Blue;  ">Loan Application</b></h6>
+            
+        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+            <div class="m-4">
+                <div class="row myRow" > 
+                    <div class="col-md-6">
+                        <h6 class="heading">Email
+                        </h6>
+                        <input [(ngModel)]="nametodisplay" [ngModelOptions]="{standalone:true}" type="purpose" class="form-control" id="exampleInputpurpose" aria-describedby="purposeHelp" placeholder={{nametodisplay}>
+                    
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="heading">Purpose</h6>
+                        <input [(ngModel)]="Purpose" [ngModelOptions]="{standalone:true}" type="purpose" class="form-control" id="exampleInputpurpose" aria-describedby="purposeHelp" placeholder="Enter Purpose" required>
+                    </div>
+                    
+                </div>
+                    
+                <div class="row myRow" >
+                    <div class="col-md-6">
+                        <h6 class="heading">Amount Requested</h6>
+                        <input [(ngModel)]="AmountRequested" [ngModelOptions]="{standalone:true}" type="AmountRequested" class="form-control" id="exampleInputCNIC" aria-describedby="AmountRequestedHelp" placeholder="Enter Amount Requested" required>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="heading">Apply Date</h6>
+                        <input class="form-control datetimepicker" [(ngModel)]="ApplyDate" [ngModelOptions]="{standalone:true}" type="date" value="20/08/2019" name="Apply Date">
+                    </div>
+
+                </div>
+            
+                <div class="row myRow" >
+                <!-- <div class="col-md-6">
+                        <h6 class="heading">Loan Status</h6>
+                        <select [(ngModel)]="loanstatus" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="LoanStatusid">
+                          <option *ngFor="let loan_obj of loans" [ngValue]="loan_obj._id">{{loan_obj.Name}}</option>
+                        </select>
+                      </div>  -->
+                   
+                </div>
+
+                <div class="row myRow" >
+                    <div class="col-md-12 buttonBlock">
+                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
+                    </div>                
+                </div>
+            </div>
+        </form>
+        <!-- <p class="text-center mb-4">
+            Already a member
+            <a data-toggle="tab" routerLink="">Sign In</a>
+          </p> -->
+    </div>
+</div>
+
