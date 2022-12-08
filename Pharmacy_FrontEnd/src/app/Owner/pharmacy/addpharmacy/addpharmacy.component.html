@@ -1,0 +1,34 @@
+<h1 class="Name" >Add Pharmacy</h1>
+<div class="container-fluid">
+    <!-- <img class="img-responsive" src="assets/Images/images.jpg"> -->
+    <div class="AddPharmacy">
+        <h1 class="Pharmacy"></h1>
+        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">  
+            <div class="m-4 rowContainer">
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading" style="font-size:large;">Location</h6>
+                        <input type="Location" [(ngModel)]="Location" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputLocation" aria-describedby="LocationHelp" placeholder="Enter Location">
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading" style="font-size:large;">ContactNumber</h6>
+                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number">
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div class="col-md-12 buttonBlock">
+                        <button class="btn btn-primary mt-4 mb-4" type="submit"  style="background-color:rgb(18, 18, 19);"> Add
+                            <!-- <a data-toggle="tab" style="background-color:rgb(18, 18, 19); " routerLink="/addPharmacyInfo">Add</a> -->
+                        </button>
+                        <button class="btn btn-primary mt-4 mb-4" type="submit"  style="background-color:rgb(18, 18, 19);">
+                            <a data-toggle="tab" style="background-color:rgb(18, 18, 19); " routerLink="/view-pharmacy">View</a>
+                        </button>
+                    </div>                
+                </div>
+                
+            </div>
+        </form>
+    </div>
+</div>

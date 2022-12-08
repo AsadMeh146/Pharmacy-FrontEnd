@@ -17,6 +17,8 @@ import { OrderStockComponent } from './Admin/Stock-Details/order-stock/order-sto
 import { ReceiveStockComponent } from './Admin/Stock-Details/receive-stock/receive-stock.component';
 import { AddCategoryComponent } from './Admin/Category-Details/add-category/add-category.component';
 import { EditCategoryComponent } from './Admin/Category-Details/edit-category/edit-category.component';
+import {AddpharmacyComponent} from './Owner/pharmacy/addpharmacy/addpharmacy.component';
+import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { EditCategoryComponent } from './Admin/Category-Details/edit-category/ed
     ReceiveStockComponent,
     AddCategoryComponent,
     EditCategoryComponent,
+    AddpharmacyComponent,
+    ViewpharmacyComponent
   ],
   imports: [
     BrowserModule,

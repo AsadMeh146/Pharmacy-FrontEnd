@@ -9,6 +9,8 @@ import { EditShipperComponent } from './Admin/Shipper-Details/edit-shipper/edit-
 import { AddStockComponent } from './Admin/Stock-Details/add-stock/add-stock.component';
 import { EditStockComponent } from './Admin/Stock-Details/edit-stock/edit-stock.component';
 import { AddCategoryComponent } from './Admin/Category-Details/add-category/add-category.component';
+import {AddpharmacyComponent} from './Owner/pharmacy/addpharmacy/addpharmacy.component';
+import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.component';
 
 const routes: Routes = [
   {path:'',component:SignInComponent},
@@ -19,8 +21,9 @@ const routes: Routes = [
   {path:'edit-shipper',component:EditShipperComponent},
   {path:'add-product',component:AddStockComponent},
   {path:'edit-product',component:EditStockComponent},
-  {path:'add-category',component:AddCategoryComponent}
-
+  {path:'add-category',component:AddCategoryComponent},
+  {path:'add-pharmacy',component:AddpharmacyComponent},
+  {path:'view-pharmacy',component:ViewpharmacyComponent}
 
 ];
 
