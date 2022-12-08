@@ -9,7 +9,7 @@
                
             <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 15px  ;color: Blue;  ">Manage Employee</b></h6>
             
-        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+        <form enctype="multipart/form-data" action="" ngNativeValidate (ngSubmit)="handleSubmit()">
             <div class="m-4">
                 <div class="row myRow" >
                     <div class="col-md-4">
@@ -75,6 +75,13 @@
                           <option *ngFor="let designation of designations" [ngValue]="designation._id">{{designation.Name}}</option>
                         </select>
                       </div>
+                      <div class="col-md-4" >
+                        <div>
+                            <h6 class="heading" style="font-size:large;">Images</h6>
+                            <input type="file"  class="form-control" (change) = "onClickSelected($event)" method = "POST"> 
+                            <!-- <input type="file"    name = "file" [(ngModel)]="image" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputimage" aria-describedby="imageHelp" placeholder="Select file"> -->
+                        </div>
+                    </div>
                 </div>
 
                 <div class="row myRow" >
@@ -91,6 +98,7 @@
                            
                             <input type="file" class="form-control" id="customFile" />
                     </div> -->
+                    
                 </div>
 
 

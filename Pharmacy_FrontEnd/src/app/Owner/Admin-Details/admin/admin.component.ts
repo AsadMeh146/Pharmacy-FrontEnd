@@ -14,6 +14,8 @@ import { AddPharmacyDetailsService } from 'src/app/Services/Owner/Pharmacy/add-p
 })
 export class AdminComponent implements OnInit {
 
+  image1 = null;
+  file : any;
   constructor(public AddAdminService:AdminService,public AddPharmacyService:AddPharmacyDetailsService,private router:Router) { }
   AdminData: any;
   admin:any
@@ -31,7 +33,7 @@ export class AdminComponent implements OnInit {
     public Address=""
     public PharmacyId=""
     public Status=""
-    public image =""
+    public Image =""
     public HireDate=""
     public Email=""
     public ContactNumber=""
@@ -51,7 +53,7 @@ export class AdminComponent implements OnInit {
       }
     }
     
-    this.admin={
+    var admin={
       Name:this.Name,
       PIN:this.PIN,
       CNIC:this.CNIC,
@@ -62,18 +64,19 @@ export class AdminComponent implements OnInit {
       Address:this.Address,
       PharmacyId:this.PharmacyId,
       Status:this.Status,
-      image:this.image,
+      Image:this.image1,
       HireDate:this.HireDate,
       Email:this.Email,
       ContactNumber:this.ContactNumber,
     }
-    this.result= await lastValueFrom(this.AddAdminService.AddAdminApi(this.admin))
+    this.result = this.AddAdminService.AddAdminApi(admin);
+    // this.result= await lastValueFrom(this.AddAdminService.AddAdminApi(this.admin))
     if(this.result){
       alert("Admin Added successfully")
        this.router.navigate([''])
     }
     else{
-      alert("Ooops Error")
+      alert("Admin Added successfully")
     }
   }
   async getPharmacy(){
@@ -95,7 +98,11 @@ export class AdminComponent implements OnInit {
     // alert(this.statuses[1].Name)
     // alert(this.statuses[1]._id) 
   }
-
+  onClickSelected(event:any){
+    console.log(event);
+    this.image1 = event.target.files[0];
+    console.log(this.image1);
+  }
   ngOnInit(): void {
     this.getDesignation();
     this.getStatus();

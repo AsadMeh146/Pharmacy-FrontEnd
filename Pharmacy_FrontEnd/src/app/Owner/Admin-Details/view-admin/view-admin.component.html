@@ -1,0 +1,49 @@
+<div class="container">
+    <table class="table mt-3">
+        <thead >
+          <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">CNIC</th>
+          <th scope="col">Salary</th>
+          <th scope="col">Designation</th>
+          <th scope="col">DateOfBirth</th>
+          <th scope="col">Address</th>
+          <th scope="col">PharmacyId</th>
+          <th scope="col">Status</th>
+          <th scope="col">HireDate</th>
+          <th scope="col">Email</th>
+          <th scope="col">ContactNumber</th>
+          <!-- <th scope="col">Actions</th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of AdminData ">
+            <td> 
+              <img style= "height:80px; width: 80px" [src] = "'http://localhost:8001/'+'upload-files/'+row.Image">
+            </td>
+            <td>{{row.Name}}</td>
+            <td>{{row.CNIC}}</td>
+            <td>{{row.Salary}}</td>
+            <td>{{row.Designation}}</td>
+            <td>{{row.DateOfBirth}}</td>
+            <td>{{row.Address}}</td>
+            <td>{{row.PharmacyId}}</td>
+            <!-- <td>{{row.pharmacyRequests.Location}}}</td> -->
+            <td>{{row.Status}}</td>
+            <td>{{row.HireDate}}</td>
+            <td>{{row.Email}}</td>
+            <td>{{row.ContactNumber}}</td>
+            <td>
+                <!-- <button class="btn btn-info" >Edit</button>
+                <button class="btn-btn-danger">Delete</button> -->
+              <!-- <button class="btn btn-info " (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-bs-toggle="modal" data-bs-target="#updateModal" value = "Update">Edit</button> -->
+              <!-- <button class="btn btn-danger " (click) = "deletePharmacyData(row._id)" value="Delete" >Delete</button> -->
+          </td>
+        
+
+        </tbody>
+      </table>
+     
+    </div>
+  

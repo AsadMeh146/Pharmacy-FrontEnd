@@ -18,6 +18,10 @@ export class AddPharmacyDetailsService {
   {
     return this.http.get(`${environment.baseUrl}/view-pharmacy`)
   }
+  // getPharmacyApiLocation()
+  // {
+  //   return this.http.get(`${environment.baseUrl}/get-location/add-pharmacy-location`)
+  // }
   
   updatePharmacyApi(Id:any,pharmacy:any){
     return this.http.put(`${environment.baseUrl}/view-pharmacy/${Id}`,pharmacy)

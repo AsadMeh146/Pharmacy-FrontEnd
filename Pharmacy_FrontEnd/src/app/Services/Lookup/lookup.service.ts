@@ -1,19 +1,14 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from './../../../environments/environment';
-
+import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class LookupService {
 
   constructor(private http:HttpClient) { }
-  getProductCategoryApi()
+  getloanStatusApi()
   {
-    return this.http.get(`${environment.baseUrl}/get-product-category`);
-  }
-  registerCategoryApi(user:any)
-  {
-    return this.http.post(`${environment.baseUrl}/add-category`,user)
+    return this.http.get(`${environment.baseUrl}/get-loan-status/status-loan`);
   }
 }

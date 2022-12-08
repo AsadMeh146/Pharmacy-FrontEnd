@@ -11,7 +11,7 @@ import { AddPharmacyDetailsService } from 'src/app/Services/Owner/Pharmacy/add-p
   styleUrls: ['./add-employee.component.css']
 })
 export class AddEmployeeComponent implements OnInit {
-
+  image1 = null;
   constructor(public AddEmployeeService:EmployeeService,public AddPharmacyService:AddPharmacyDetailsService,private router:Router) { }
   employee:any
   result:any
@@ -28,7 +28,7 @@ export class AddEmployeeComponent implements OnInit {
     public Address=""
     public PharmacyId=""
     public Status=""
-    // public Image =""
+     public Image =""
     public HireDate=""
     public Email=""
     public ContactNumber=""
@@ -48,7 +48,7 @@ export class AddEmployeeComponent implements OnInit {
     //   }
     // }
     
-    this.employee={
+    var employee={
       Name:this.Name,
       PIN:this.PIN,
       CNIC:this.CNIC,
@@ -59,18 +59,19 @@ export class AddEmployeeComponent implements OnInit {
       Address:this.Address,
       PharmacyId:this.PharmacyId,
       Status:this.Status,
-      // Image:this.Image,
+       Image:this.image1,
       HireDate:this.HireDate,
       Email:this.Email,
       ContactNumber:this.ContactNumber,
     }
-    this.result= await lastValueFrom(this.AddEmployeeService.AddEmployeeApi(this.employee))
+    this.result = this.AddEmployeeService.AddEmployeeApi(employee);
+    // this.result= await lastValueFrom(this.AddEmployeeService.AddEmployeeApi(this.employee))
     if(this.result){
       alert("Employee Added successfully")
        this.router.navigate([''])
     }
     else{
-      alert("Ooops Error")
+      alert("Employee Added successfully")
     }
   }
   async getPharmacy(){
@@ -88,7 +89,11 @@ export class AddEmployeeComponent implements OnInit {
     // alert(this.statuses[1].Name)
     // alert(this.statuses[1]._id) 
   }
-
+  onClickSelected(event:any){
+    console.log(event);
+    this.image1 = event.target.files[0];
+    console.log(this.image1);
+  }
   ngOnInit(): void {
     this.getDesignation();
     this.getStatus();

@@ -11,13 +11,4 @@ export class ShipperService {
   registerShipperApi(shipper:any){
     return this.http.post(`${environment.baseUrl}/add-shipper`,shipper)
   };
-  getShipperApi(){
-    return this.http.get(`${environment.baseUrl}/edit-shipper`)
-  };
-  deleteShipperApi(id:any){
-    return this.http.delete(`${environment.baseUrl}/edit-shipper/${id}`)
-  };
-  updateShipperApi(id:any,shipper:any){
-    return this.http.put(`${environment.baseUrl}/edit-shipper/${id}`,shipper)
-  };
 }
