@@ -1,0 +1,36 @@
+.signUpBlock{
+    margin-left: 30%;
+    margin-right: 30%;
+    background-color: whitesmoke;
+    margin-top: 100px;
+    border-radius: 10px;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+   
+    
+}
+.signUp{
+    margin-top: 20px;
+   
+    
+}
+.myRow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    text-align: left;
+}
+.heading{
+    font-size: 15px;
+    font-weight: normal;
+}
+.buttonBlock{
+    text-align: center;
+    border-radius: 5px;
+}
+.text-center
+{
+    padding-bottom: 20px;
+}
