@@ -4,9 +4,6 @@ import { lastValueFrom } from 'rxjs';
 import {AdminService} from 'src/app/Services/Owner/Admin/admin.service';
 import { AddPharmacyDetailsService } from 'src/app/Services/Owner/Pharmacy/add-pharmacy-details.service';
 
-
-
-
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',

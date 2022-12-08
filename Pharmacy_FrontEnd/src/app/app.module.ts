@@ -19,7 +19,8 @@ import { AddCategoryComponent } from './Admin/Category-Details/add-category/add-
 import { EditCategoryComponent } from './Admin/Category-Details/edit-category/edit-category.component';
 import {AddpharmacyComponent} from './Owner/pharmacy/addpharmacy/addpharmacy.component';
 import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.component';
-
+import { AdminComponent } from './Owner/Admin-Details/admin/admin.component';
+import { AddEmployeeComponent } from './Admin/Employee-Details/add-employee/add-employee.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,10 @@ import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.
     AddCategoryComponent,
     EditCategoryComponent,
     AddpharmacyComponent,
-    ViewpharmacyComponent
+    ViewpharmacyComponent,
+    AdminComponent,
+    AddEmployeeComponent
+
   ],
   imports: [
     BrowserModule,
