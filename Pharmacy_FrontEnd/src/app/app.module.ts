@@ -11,6 +11,12 @@ import { AddManufacturerComponent } from './Admin/Manufacturer-Details/add-manuf
 import { EditManufacturerComponent } from './Admin/Manufacturer-Details/edit-manufacturer/edit-manufacturer.component';
 import { AddShipperComponent } from './Admin/Shipper-Details/add-shipper/add-shipper.component';
 import { EditShipperComponent } from './Admin/Shipper-Details/edit-shipper/edit-shipper.component';
+import { AddStockComponent } from './Admin/Stock-Details/add-stock/add-stock.component';
+import { EditStockComponent } from './Admin/Stock-Details/edit-stock/edit-stock.component';
+import { OrderStockComponent } from './Admin/Stock-Details/order-stock/order-stock.component';
+import { ReceiveStockComponent } from './Admin/Stock-Details/receive-stock/receive-stock.component';
+import { AddCategoryComponent } from './Admin/Category-Details/add-category/add-category.component';
+import { EditCategoryComponent } from './Admin/Category-Details/edit-category/edit-category.component';
 import {AddpharmacyComponent} from './Owner/pharmacy/addpharmacy/addpharmacy.component';
 import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.component';
 import { AdminComponent } from './Owner/Admin-Details/admin/admin.component';
@@ -38,6 +44,17 @@ import { ViewEmployeeComponent } from './Admin/Employee-Details/view-employee/vi
     ViewloanComponent,
     ViewAdminComponent,
     ViewEmployeeComponent,
+    AddStockComponent,
+    EditStockComponent,
+    OrderStockComponent,
+    ReceiveStockComponent,
+    AddCategoryComponent,
+    EditCategoryComponent,
+    AddpharmacyComponent,
+    ViewpharmacyComponent,
+    AdminComponent,
+    AddEmployeeComponent
+
   ],
   imports: [
     BrowserModule,
