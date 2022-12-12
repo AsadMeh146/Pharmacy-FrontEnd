@@ -11,4 +11,12 @@ export class LookupService {
   {
     return this.http.get(`${environment.baseUrl}/get-loan-status/status-loan`);
   }
+  registerCategoryApi(user:any)
+  {
+    return this.http.post(`${environment.baseUrl}/add-category`,user)
+  }
+  getProductCategoryApi()
+  {
+    return this.http.get(`${environment.baseUrl}/get-product-category`);
+  }
 }
