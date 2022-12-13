@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="heading">CNIC.</h6>
-                        <input [(ngModel)]="CNIC" [ngModelOptions]="{standalone:true}" type="cnic" class="form-control" id="exampleInputCNIC" aria-describedby="CNICHelp" placeholder="Enter CNIC" required>
+                        <input [(ngModel)]="CNIC" [ngModelOptions]="{standalone:true}" type="text" class="form-control"    id="exampleInputCNIC" aria-describedby="CNICHelp" placeholder="Enter CNIC" required>
                     </div>
                 </div>
                 <div class="row myRow" >
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-md-4">
                         <h6 class="heading">Contact Number</h6>
-                        <input [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" type="ContactNumber" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+                        <input [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" type="ContactNumber" class="form-control" id="exampleInputContactNumber" pattern="[0-9]{4}[0-9]{4}[0-9]{3}" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
                     </div>
 
                 

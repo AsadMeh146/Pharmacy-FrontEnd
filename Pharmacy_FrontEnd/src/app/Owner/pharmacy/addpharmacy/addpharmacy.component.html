@@ -20,7 +20,7 @@
                 <div class="row myRow" >
                     <div>
                         <h6 class="heading" style="font-size:large;">ContactNumber</h6>
-                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" pattern="[0-9]{4}[0-9]{4}[0-9]{3}" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
                     </div>
                 </div>
                 <div class="row myRow" >
