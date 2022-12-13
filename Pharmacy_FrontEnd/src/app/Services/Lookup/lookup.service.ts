@@ -11,6 +11,10 @@ export class LookupService {
   {
     return this.http.get(`${environment.baseUrl}/get-loan-status/status-loan`);
   }
+  getdesignationApi()
+  {
+    return this.http.get(`${environment.baseUrl}/get-designation`);
+  }
   registerCategoryApi(user:any)
   {
     return this.http.post(`${environment.baseUrl}/add-category`,user)

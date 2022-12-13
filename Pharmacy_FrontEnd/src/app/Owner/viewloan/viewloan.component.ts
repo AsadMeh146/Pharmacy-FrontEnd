@@ -46,6 +46,7 @@ export class ViewloanComponent implements OnInit {
     this.loan_Id=loan_Id;
     this.loanstatus = loanstatus;
   }
+  
   async getloanstatus(){
     console.log("Hello");
     this.loanRequests=await lastValueFrom(this.LookupService.getloanStatusApi())

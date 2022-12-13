@@ -25,6 +25,7 @@ import { AddLoanComponent } from './Admin/Loan-Details/add-loan/add-loan.compone
 import { ViewloanComponent } from './Owner/viewloan/viewloan.component';
 import { ViewAdminComponent } from './Owner/Admin-Details/view-admin/view-admin.component';
 import { ViewEmployeeComponent } from './Admin/Employee-Details/view-employee/view-employee.component';
+import { AddcustomerComponent } from './Employee/CustomerDetail/addcustomer/addcustomer.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { ViewEmployeeComponent } from './Admin/Employee-Details/view-employee/vi
     AddpharmacyComponent,
     ViewpharmacyComponent,
     AdminComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    AddcustomerComponent
 
   ],
   imports: [

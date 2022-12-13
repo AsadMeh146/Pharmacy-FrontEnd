@@ -20,25 +20,23 @@
         <tbody>
           <tr *ngFor="let row of employeeData ">
             <td> 
-              <img style= "height:33px; width: 33px" [src] = "'http://localhost:8001/'+'upload-files/'+row.Image">
+              <img style= "height:33px; width: 80px" [src] = "'http://localhost:8001/'+'upload-files/'+row.Image">
             </td>
             <td>{{row.Name}}</td>
             <td>{{row.CNIC}}</td>
             <td>{{row.Salary}}</td>
-            <td>{{row.EmployeeDesignation.Name}}</td>
+            <td>{{row.Designation.Name}}</td>
             <td>{{row.DateOfBirth}}</td>
             <td>{{row.Address}}</td>
             <td>{{row.Pharmacy.Location}}</td>
-            <!-- <td>{{row.pharmacyRequests.Location}}}</td> -->
+
             <td>{{row.Status.Name}}</td>
             <td>{{row.HireDate}}</td>
             <td>{{row.Email}}</td>
             <td>{{row.ContactNumber}}</td>
             <td>
-                <!-- <button class="btn btn-info" >Edit</button>
-                <button class="btn-btn-danger">Delete</button> -->
-              <!-- <button class="btn btn-info " (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-bs-toggle="modal" data-bs-target="#updateModal" value = "Update">Edit</button> -->
-              <!-- <button class="btn btn-danger " (click) = "deletePharmacyData(row._id)" value="Delete" >Delete</button> -->
+                <input type ="button"  (click) = "setEmployeeData(row._id,row.Name,row.CNIC,row.Salary,row.Designation,row.DateOfBirth,row.Address,row.PharmacyId,row.Status,row.HireDate,row.Email,row.ContactNumber)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+                <input type="button" (click) = "deleteEmployeeData(row._id)" value="Delete" class = "btn btn-outline-danger">
           </td>
         
 
@@ -46,4 +44,81 @@
       </table>
      
     </div>
+
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title" id="myModalLabel">Edit Pharmacy Data</h4>
+              </div>
+              <form action="" ngNativeValidate (ngSubmit)="updateEmployeeDetails()">
+                  <div class="modal-body">
+                       <div class="m-4">
+                          <div class="row myRow" >
+                              <div class="col-md-6">
+                                  <h6 class="heading">Name</h6>
+                                  <input [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" type="Name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" placeholder="Enter Name" required>
+                              </div>
+                              <div class="col-md-6">
+                                  <h6 class="heading">CNIC.</h6>
+                                  <input [(ngModel)]="CNIC" [ngModelOptions]="{standalone:true}" type="cnic" class="form-control" id="exampleInputCNIC" aria-describedby="CNICHelp" placeholder="Enter CNIC" required>
+                              </div>
+                          </div>
+                          <div class="row myRow" >
+                              <div class="col-md-6">
+                                  <h6 class="heading">Address</h6>
+                                  <input [(ngModel)]="Address" [ngModelOptions]="{standalone:true}" type="Address" class="form-control" id="exampleInputAddress" aria-describedby="AddressHelp" placeholder="Enter Address" required>
+                              </div>
+                              <div class="col-md-6">
+                                  <h6 class="heading">Salary</h6>
+                                  <input [(ngModel)]="Salary" [ngModelOptions]="{standalone:true}" type="Salary" class="form-control" id="exampleInputSalary" aria-describedby="SalaryHelp" placeholder="Enter Salary" required>
+                              </div>
+                              <div class="col-md-6">
+                                  <h6 class="heading">Designation</h6>
+                                  <select [(ngModel)]="Designation" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="adminid">
+                                  <option *ngFor="let designation of designations" [ngValue]="designation._id">{{designation.Name}}</option>
+                                  </select>
+                              </div>
+                                  <div class="col-md-6">
+                                  <h6 class="heading">Email</h6>
+                                  <input [(ngModel)]="Email" [ngModelOptions]="{standalone:true}" type="Email" class="form-control" id="exampleInputEmail" aria-describedby="EmailHelp" placeholder="Enter Email" required>
+                              </div>
+                          </div>
+                          <div class="row myRow" >  
+                              <div class="col-md-6">
+                                  <h6 class="heading">Pharmacy</h6>
+                                  <select [(ngModel)]="PharmacyId" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="pharmacy-id">
+                                      <option *ngFor="let pharmac of pharmacies" [ngValue]="pharmac._id">{{pharmac.Location}}</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-6">
+                                  <h6 class="heading">Status</h6>
+                                  <select [(ngModel)]="Status" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="status-id">
+                                  <option *ngFor="let status of statuses" [ngValue]="status._id">{{status.Name}}</option>
+                                  </select>
+                              </div>
+                              <div class="col-md-6">
+                                  <h6 class="heading">Contact Number</h6>
+                                  <input [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" type="ContactNumber" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+                              </div>
+                          </div>
+                          <div class="row myRow" >
+                              <div class="col-md-6">
+                                  <h6 class="heading">Hire Date</h6>
+                                  <input class="form-control datetimepicker" [(ngModel)]="HireDate" [ngModelOptions]="{standalone:true}" type="date" value="20/08/2019" name="Hire Date">
+                              </div>
+                              <div class="col-md-6">
+                                  <h6 class="heading">Date Of Birth</h6>
+                                  <input class="form-control datetimepicker" [(ngModel)]="DateOfBirth" [ngModelOptions]="{standalone:true}" type="date" value="20/08/2019" name="Date Of Birth">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+                          </div>
+                  </div>
+              </div>
+              </form>
+          </div>
+      </div>
+  </div>
   

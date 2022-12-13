@@ -1,32 +1,31 @@
-<h1 class="Name" >Add Pharmacy</h1>
+
 <div class="container-fluid">
     <!-- <img class="img-responsive" src="assets/Images/images.jpg"> -->
     <div class="AddPharmacy">
-        <h1 class="Pharmacy"></h1>
+        <div class="container">
+            <div class="col-md-2">
+                <a class="text-white opacity-50" href="javascript:;"><b style="color: Grey;">Pharmacy/</b><b style="color: Black;">Owner</b></a>
+            </div>
+        </div>
+       
+    <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 10px  ;color: Blue;  ">Manage Pharmacy</b></h6>
         <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">  
             <div class="m-4 rowContainer">
                 <div class="row myRow" >
                     <div>
                         <h6 class="heading" style="font-size:large;">Location</h6>
-                        <input type="Location" [(ngModel)]="Location" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputLocation" aria-describedby="LocationHelp" placeholder="Enter Location">
+                        <input type="Location" [(ngModel)]="Location" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputLocation" aria-describedby="LocationHelp" placeholder="Enter Location" required>
                     </div>
                 </div>
                 <div class="row myRow" >
                     <div>
                         <h6 class="heading" style="font-size:large;">ContactNumber</h6>
-                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number">
+                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
                     </div>
                 </div>
                 <div class="row myRow" >
                     <div class="col-md-12 buttonBlock">
-                        <button class="btn btn-primary mt-4 mb-4" type="submit"  style="background-color:rgb(18, 18, 19);"> Add
-                            <!-- <a data-toggle="tab" style="background-color:rgb(18, 18, 19); " routerLink="/addPharmacyInfo">Add</a> -->
-                        </button>
-                        
-                        <button class="btn btn-primary mt-4 mb-4" type="submit"  style="background-color:rgb(18, 18, 19);">
-                            <a data-toggle="tab" style="background-color:rgb(18, 18, 19); " routerLink="/view-pharmacy">View</a>
-                            <a data-toggle="tab" style="background-color:rgb(18, 18, 19); " routerLink="/ViewPharmacyInfo">View</a>
-                        </button>
+                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
                     </div>                
                 </div>
                 

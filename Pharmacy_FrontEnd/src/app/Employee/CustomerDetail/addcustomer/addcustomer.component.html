@@ -1,0 +1,55 @@
+
+<div class="container-fluid">
+    <div class="AddPharmacy">
+        <div class="container">
+            <div class="col-md-2">
+                <a class="text-white opacity-50" href="javascript:;"><b style="color: Grey;">Pharmacy/</b><b style="color: Black;">Employee</b></a>
+            </div>
+        </div>
+       
+    <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 10px  ;color: Blue;  ">Manage Customer</b></h6>
+        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">  
+            <div class="m-4 rowContainer">
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading" style="font-size:large;">Name</h6>
+                        <input type="Location" [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputName" aria-describedby="NameHelp" placeholder="Enter Name" required>
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading" style="font-size:large;">Order Date</h6>
+                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div class="col-md-12 buttonBlock">
+                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
+                    </div>                
+                </div>
+                
+            </div>
+
+            <!--  -->
+            <div class="m-4 rowContainer">
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading" style="font-size:large;">Name</h6>
+                        <input type="Location" [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputName" aria-describedby="NameHelp" placeholder="Enter Name" required>
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div>
+                        <h6 class="heading" style="font-size:large;">Contact Number</h6>
+                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
+                    </div>
+                </div>
+                <div class="row myRow" >
+                    <div class="col-md-12 buttonBlock">
+                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
+                    </div>                
+                </div>
+                
+            </div>
+        </form>
+    </div>

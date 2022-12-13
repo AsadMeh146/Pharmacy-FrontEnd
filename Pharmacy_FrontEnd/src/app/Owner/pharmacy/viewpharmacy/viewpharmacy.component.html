@@ -12,8 +12,8 @@
         <td>{{row.Location}}</td>
         <td>{{row.ContactNumber}}</td>
         <td>
-          <button class="btn btn-info " (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-bs-toggle="modal" data-bs-target="#updateModal" value = "Update">Edit</button>
-          <button class="btn btn-danger " (click) = "deletePharmacyData(row._id)" value="Delete" >Delete</button>
+          <input type="button" (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+          <input type="button" (click) = "deletePharmacyData(row._id)" value="Delete" class = "btn btn-outline-danger">
       </td>
     </tr>
     </tbody>

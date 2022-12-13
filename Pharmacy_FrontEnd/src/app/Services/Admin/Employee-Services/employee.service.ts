@@ -51,6 +51,16 @@ export class EmployeeService {
     // return this.http.get(`${environment.baseUrl}/ViewPharmacyInfo`)
     //return this.http.get(`${environment.baseUrl}/view-admin`)
   }
+ 
+  deleteEmployeeApi(Id:any){
+    console.log("deleted!!!")
+    return this.http.delete(`${environment.baseUrl}/view-employee/${Id}`)
+   
+  }
+  
+  updateEmployeeApi(Id:any,employee:any){
+    return this.http.put(`${environment.baseUrl}/view-admin/${Id}`,employee)
+  }
   // getPharmacyApi(){
   //   console.log("")
   //    return this.http.get(`${environment.baseUrl}/get-status/admin-status`)

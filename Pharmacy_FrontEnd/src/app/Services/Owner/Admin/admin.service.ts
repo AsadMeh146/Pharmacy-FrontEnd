@@ -53,7 +53,15 @@ export class AdminService {
     // return this.http.get(`${environment.baseUrl}/ViewPharmacyInfo`)
     //return this.http.get(`${environment.baseUrl}/view-admin`)
   }
-  
+  deleteAdminApi(Id:any){
+    console.log("deleted!!!")
+    return this.http.delete(`${environment.baseUrl}/view-admin/${Id}`)
+   
+  }
+
+  updateAdminApi(Id:any,admin:any){
+    return this.http.put(`${environment.baseUrl}/view-admin/${Id}`,admin)
+  }
   // getPharmacyApi(){
   //   console.log("")
   //    return this.http.get(`${environment.baseUrl}/get-status/admin-status`)
