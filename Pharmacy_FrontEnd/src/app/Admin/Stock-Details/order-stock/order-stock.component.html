@@ -1,1 +1,44 @@
-<p>order-stock works!</p>
+<div class="container-fluid">
+  <div class="signUpBlock">
+      <p id="label_size"> <b>Admin / </b> Order Stock </p>
+      <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+          <div class="m-4">
+              <div class="row myRow" >
+                  <div class="col-md-6">
+                      <h6 class="heading">Manufacturer</h6>
+                    <select [(ngModel)]="manufacturerId" [ngModelOptions]="{standalone:true}" (change)="setShipper_and_Product()" class="form-select" aria-label="Default select example" id="manufacturer-id">
+                      <option *ngFor="let manufacturer of manufacturers" [ngValue]="manufacturer._id">{{manufacturer.name}}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                      <h6 class="heading">Shipper</h6>
+                      <select [(ngModel)]="shipperId" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="manufacturer-id">
+                        <option *ngFor="let shipper of selectedShipper" [ngValue]="shipper._id">{{shipper.name}}</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="row myRow" >
+                  <div class="col-md-6">
+                      <h6 class="heading">Product</h6>
+                      <select [(ngModel)]="productId" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="manufacturer-id">
+                        <option *ngFor="let product of selectedProduct" [ngValue]="product._id">{{product.name + " " + product.category.Name + " " + product.strength}}</option>
+                      </select>
+                  </div>
+                  <div class="col-md-6">
+                    <h6 class="heading">Quantity</h6>
+                    <input [(ngModel)]="address" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="exampleInputaddress" aria-describedby="addressHelp" placeholder="Enter Quantity" required>
+                </div>
+              </div>
+
+              <div class="row myRow" >
+                  <div class="col-md-12 buttonBlock">
+                    <button class="btn btn-outline-primary mt-4 mb-4">Add</button>
+                  </div>
+              </div>
+          </div>
+      </form>
+  </div>
+</div>
+
+
+
