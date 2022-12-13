@@ -17,6 +17,7 @@ import {AddpharmacyComponent} from './Owner/pharmacy/addpharmacy/addpharmacy.com
 import {ViewpharmacyComponent} from './Owner/pharmacy/viewpharmacy/viewpharmacy.component';
 import { AdminComponent } from './Owner/Admin-Details/admin/admin.component';
 import { AddEmployeeComponent } from './Admin/Employee-Details/add-employee/add-employee.component';
+import { OrderStockComponent } from './Admin/Stock-Details/order-stock/order-stock.component';
 const routes: Routes = [
   {path:'',component:SignInComponent},
   {path:'signup',component:SignUpComponent},
@@ -35,7 +36,8 @@ const routes: Routes = [
   {path:'add-product',component:AddStockComponent},
   {path:'edit-product',component:EditStockComponent},
   {path:'add-category',component:AddCategoryComponent},
-  {path:'view-pharmacy',component:ViewpharmacyComponent}
+  {path:'view-pharmacy',component:ViewpharmacyComponent},
+  {path:'order-stock',component:OrderStockComponent}
 ];
 
 @NgModule({
