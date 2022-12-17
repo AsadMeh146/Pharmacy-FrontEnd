@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { StockService } from 'src/app/Services/Admin/Stock-Services/stock.service';
 import { ManufacturerService } from 'src/app/Services/Admin/Manufacturer-Services/manufacturer.service';
 import { LookupService } from 'src/app/Services/Lookup/lookup.service';
+import { login_user } from 'src/app/class/user';
 @Component({
   selector: 'app-add-stock',
   templateUrl: './add-stock.component.html',
@@ -13,13 +14,15 @@ export class AddStockComponent implements OnInit {
   stock:any
   result:any
   manufacturers:any
+  loginobj = login_user;
+
   productCategories:any
   public name=""
   public category=""
   public description=""
   public strength=""
   public manufacturerName=""
-  public pharmacyId = "6380920946c6abc3c48115dc";
+  public pharmacyId = String;
   constructor(public StockService:StockService,public ManufacturerService:ManufacturerService,public LookupService:LookupService,private router:Router) { }
   async getManufaturers(){
     this.manufacturers=await lastValueFrom(this.ManufacturerService.getManufacturerApi())
@@ -45,6 +48,8 @@ export class AddStockComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+    this.loginobj = login_user.GetInstance()
+    this.pharmacyId = this.loginobj.login_pharmacyId;
     this.getManufaturers();
     this.getProductCategory();
   }

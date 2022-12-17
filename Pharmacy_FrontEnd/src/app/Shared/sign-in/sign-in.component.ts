@@ -16,7 +16,7 @@ export class SignInComponent implements OnInit {
   password = ""
   loggedInUser: any
   credentials:any
-  
+
   async formSubmission(){
     let gettingemail : login_user
     gettingemail = login_user.GetInstance()
@@ -32,7 +32,8 @@ export class SignInComponent implements OnInit {
     if(this.loggedInUser.length>0)
     {
       alert("User is registered successfully")
-      gettingemail.login_email = this.loggedInUser[0].Email
+      gettingemail.login_email = this.loggedInUser[0].Email;
+      gettingemail.login_pharmacyId = this.loggedInUser[0].PharmacyId;
       console.log("this is email from bk" , this.loggedInUser[0].Email)
       console.log("this is email saved in class" , gettingemail.login_email)
       this.router.navigate(['/add-loan'])

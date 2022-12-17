@@ -1,9 +1,10 @@
 class login_user{
     private static instance_variable : any;
     public login_email = String;
+    public login_pharmacyId = String;
     public login_password=  Number;
   static login_email: StringConstructor;
-
+  static login_pharmacyId: StringConstructor;
     private Constructor(){
         //no details
     }

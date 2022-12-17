@@ -38,7 +38,7 @@ const routes: Routes = [
   {path:'edit-product',component:EditStockComponent},
   {path:'add-category',component:AddCategoryComponent},
   {path:'view-pharmacy',component:ViewpharmacyComponent},
-  {path:'addcustomer',component:AddcustomerComponent}
+  {path:'addcustomer',component:AddcustomerComponent},
   {path:'order-stock',component:OrderStockComponent}
 ];
 

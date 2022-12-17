@@ -22,4 +22,8 @@ export class StockService {
   updateProductApi(id:any,product:any){
     return this.http.put(`${environment.baseUrl}/edit-product/${id}`,product)
   };
+  orderStockApi(stock:any)
+  {
+    return this.http.post(`${environment.baseUrl}/order-stock/ordered`,stock)
+  };
 }
