@@ -14,6 +14,7 @@ import { LookupService } from 'src/app/Services/Lookup/lookup.service';
 export class ViewloanComponent implements OnInit {
   loanData:any;
   loanRequests:any;
+  searchText:any
   loan_update:any;
   result:any;
   loan_Id:any;

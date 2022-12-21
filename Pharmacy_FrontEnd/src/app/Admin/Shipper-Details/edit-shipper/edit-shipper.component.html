@@ -1,29 +1,43 @@
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Manufacturer</th>
-      <th scope="col">Phone</th>
-      <th scope="col">Address</th>
-      <th scope="col">Email</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let shipper of shippers" >
-      <td>{{shipper.name}}</td>
-      <td>{{shipper.manufacturerDetails.name}}</td>
-      <td>{{shipper.contact}}</td>
-      <td>{{shipper.address}}</td>
-      <td>{{shipper.email}}</td>
-
-
-      <input type="button" (click) = "deleteShipper(shipper._id)" value = "Delete" class = "btn btn-outline-danger">
-      <input type="button" (click) = "setShipper(shipper._id,shipper.name,shipper.manufacturerDetails.name,shipper.contact,shipper.address,shipper.email)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
-    </tr>
-  </tbody>
-</table>
+<div class="container-fluid">
+  <!-- <img class="img-responsive" src="assets/Images/images.jpg"> -->
+  <div class="AddPharmacy">
+      <p id="label_size"> <b>Admin / </b>Edit Shipper</p>
+      <div class="row myRow">
+        <div class="col-md-4">
+            <h6 class="heading">Search</h6>
+            <input type="text" name="search" [(ngModel)]  = "searchText" class="form-control" aria-describedby="LocationHelp" placeholder="Search by name or email">
+        </div>
+    </div>
+      <div class="table-responsive table-block">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let shipper of shippers | filter:searchText"  >
+            <td>{{shipper.name}}</td>
+            <td>{{shipper.manufacturerDetails.name}}</td>
+            <td>{{shipper.contact}}</td>
+            <td>{{shipper.address}}</td>
+            <td>{{shipper.email}}</td>
+      
+      
+            <input type="button" (click) = "deleteShipper(shipper._id)" value = "Delete" class = "btn btn-outline-danger">
+            <input type="button" (click) = "setShipper(shipper._id,shipper.name,shipper.manufacturerDetails.name,shipper.contact,shipper.address,shipper.email)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

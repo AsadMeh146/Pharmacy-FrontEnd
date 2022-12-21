@@ -1,31 +1,19 @@
 <div class="container-fluid">
     <div class="signUpBlock">
-
-                <div class="container">
-                    <div class="col-md-2">
-                        <a class="text-white opacity-50" href="javascript:;"><b style="color: Grey;">Pharmacy</b></a>
-                    </div>
-                </div>
-
-            <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 15px  ;color: Blue;  ">Loan Application</b></h6>
+        <p id="label_size"> <b>Admin / </b>Add Employee </p>
 
         <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
             <div class="m-4">
                 <div class="row myRow" >
                     <div class="col-md-6">
                         <h6 class="heading">Email</h6>
-
-                        <input [(ngModel)]="nametodisplay" [readonly]="true" [ngModelOptions]="{standalone:true}" type="purpose" class="form-control" id="exampleInputpurpose" aria-describedby="purposeHelp" placeholder={{nametodisplay}}>
-
-
+                        <input [(ngModel)]="getUserEmail" [readonly]="true" [ngModelOptions]="{standalone:true}" type="purpose" class="form-control" id="exampleInputpurpose" aria-describedby="purposeHelp" placeholder={{getUserEmail}}>
                     </div>
                     <div class="col-md-6">
                         <h6 class="heading">Purpose</h6>
                         <input [(ngModel)]="Purpose" [ngModelOptions]="{standalone:true}" type="purpose" class="form-control" id="exampleInputpurpose" aria-describedby="purposeHelp" placeholder="Enter Purpose" required>
                     </div>
-
                 </div>
-
                 <div class="row myRow" >
                     <div class="col-md-6">
                         <h6 class="heading">Amount Requested</h6>

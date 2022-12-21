@@ -1,55 +1,106 @@
-
 <div class="container-fluid">
-    <div class="AddPharmacy">
-        <div class="container">
-            <div class="col-md-2">
-                <a class="text-white opacity-50" href="javascript:;"><b style="color: Grey;">Pharmacy/</b><b style="color: Black;">Employee</b></a>
-            </div>
-        </div>
-       
-    <h6 class="mb-0 font-bold text-white capitalize"><b style=" padding-left: 10px  ;color: Blue;  ">Manage Customer</b></h6>
-        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">  
-            <div class="m-4 rowContainer">
+    <div class="signUpBlock">
+        <p id="label_size"> <b>Cashier / </b> Customer Orders </p>
+        <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+            <div class="m-4">
                 <div class="row myRow" >
-                    <div>
-                        <h6 class="heading" style="font-size:large;">Name</h6>
-                        <input type="Location" [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputName" aria-describedby="NameHelp" placeholder="Enter Name" required>
+                    <div class="col-md-6">
+                        <h6 class="heading">Product</h6>
+                        <select [(ngModel)]="productId" [ngModelOptions]="{standalone:true}" class="form-select" aria-label="Default select example" id="manufacturer-id">
+                          <option *ngFor="let product of uniqueStock" [ngValue]="product._id">{{product.category.Name + " " + product.name + " " + product.strength}}</option>
+                        </select>
                     </div>
-                </div>
-                <div class="row myRow" >
-                    <div>
-                        <h6 class="heading" style="font-size:large;">Order Date</h6>
-                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
-                    </div>
+                    <div class="col-md-6">
+                      <h6 class="heading">Quantity</h6>
+                      <input [(ngModel)]="quantity" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="exampleInputaddress" aria-describedby="addressHelp" placeholder="Enter Quantity" required>
+                  </div>
                 </div>
                 <div class="row myRow" >
                     <div class="col-md-12 buttonBlock">
-                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
-                    </div>                
-                </div>
-                
-            </div>
-
-            <!--  -->
-            <div class="m-4 rowContainer">
-                <div class="row myRow" >
-                    <div>
-                        <h6 class="heading" style="font-size:large;">Name</h6>
-                        <input type="Location" [(ngModel)]="Name" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputName" aria-describedby="NameHelp" placeholder="Enter Name" required>
+                      <button class="btn btn-outline-primary mt-4 mb-4">Add</button>
                     </div>
                 </div>
-                <div class="row myRow" >
-                    <div>
-                        <h6 class="heading" style="font-size:large;">Contact Number</h6>
-                        <input type="ContactNumber" [(ngModel)]="ContactNumber" [ngModelOptions]="{standalone:true}" class="form-control" id="exampleInputContactNumber" aria-describedby="ContactNumberHelp" placeholder="Enter Contact Number" required>
-                    </div>
-                </div>
-                <div class="row myRow" >
-                    <div class="col-md-12 buttonBlock">
-                        <button  class=" mt-4 mb-4" style="background-color: Blue; color:white ; border-radius: 5px; border-color: blue;">SUBMIT</button>
-                    </div>                
-                </div>
-                
             </div>
         </form>
+        <div class="orderStock">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Manufacturer</th>
+                <th scope="col">Product</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of placeOrders" >
+                <td>{{product.manufacturerName}}</td>
+                <td>{{product.productCategory + " " + product.productName + " " + product.productStrength}}</td>
+                <td>{{product.productQuantity}}</td>
+                <input type="button" (click) = "deleteProduct(product.productid)" value = "Delete" class = "btn btn-outline-danger">
+                <input type="button" (click) = "setProductValues(product.productid,product.productQuantity)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <form action="" data-toggle="modal" data-target="#customerModal">
+        <div class="row myRow" >
+          <div class="col-md-12 buttonBlock">
+            <button class="btn btn-outline-primary mt-4 mb-4" >Confirm Order</button>
+          </div>
+      </div>
+    </form>
     </div>
+  
+  </div>
+  
+  <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Stock Order</h4>
+            </div>
+            <form action="" ngNativeValidate (ngSubmit)="updateProduct()">
+                <div class="modal-body">
+              <div class=" form-group">
+                <label class="focus-label">Quantity</label>
+                <input [(ngModel)]="updateQuantity" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="InputQuantity" aria-describedby="addressHelp" placeholder="Enter Quantity">
+            </div>
+              </div>
+                <div class="modal-footer">
+                    <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="customerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Edit Stock Order</h4>
+            </div>
+            <form action="" ngNativeValidate (ngSubmit)="placeOrder()">
+                <div class="modal-body">
+              <div class=" form-group">
+                <label class="focus-label">Name</label>
+                <input [(ngModel)]="customerName" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="InputCustomerName" aria-describedby="InputCustomerNameHelp" placeholder="Enter Name">
+            </div>
+            <div class=" form-group">
+                <label class="focus-label">Contact No.</label>
+                <input [(ngModel)]="customerContact" [ngModelOptions]="{standalone:true}" type="tel" class="form-control" id="InputCustomerContact" aria-describedby="InputCustomerNameHelp" placeholder="Enter Contact Number">
+            </div>
+              </div>
+                <div class="modal-footer">
+                    <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  

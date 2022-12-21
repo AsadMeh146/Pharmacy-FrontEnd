@@ -8,8 +8,16 @@ import { environment } from 'src/environments/environment';
 export class CustomerDetailsService {
 
   constructor(private http:HttpClient) { }
-  addCustomerApi(customer:any){
-    return this.http.post(`${environment.baseUrl}/addcustomer`,customer) 
+  getStockApi(pharmacyId:any){
+    return this.http.get(`${environment.baseUrl}/customer-order/${pharmacyId}`) 
+  };
+  addCustomerOrder(customer:any)
+  {
+    return this.http.post(`${environment.baseUrl}/customer-order`,customer)
+  }
+  addCustomerOrderDetails(customerDetail:any)
+  {
+    return this.http.post(`${environment.baseUrl}/customer-order/order-details`,customerDetail)
   }
 }
 

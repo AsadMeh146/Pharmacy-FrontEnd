@@ -1,25 +1,45 @@
-<div class="container">
-<table class="table mt-3">
-    <thead >
-      <tr>
-      <th scope="col">Location</th>
-      <th scope="col">ContactNumber</th>
-      <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let row of PharmacyData">
-        <td>{{row.Location}}</td>
-        <td>{{row.ContactNumber}}</td>
-        <td>
-          <input type="button" (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
-          <input type="button" (click) = "deletePharmacyData(row._id)" value="Delete" class = "btn btn-outline-danger">
-      </td>
-    </tr>
-    </tbody>
-  </table>
- 
+
+<div class="container-fluid">
+  <!-- <img class="img-responsive" src="assets/Images/images.jpg"> -->
+  <div class="AddPharmacy">
+      <p id="label_size"> <b>Owner / </b>Edit Pharmacy </p>
+      <div class="row myRow">
+        <div class="col-md-4">
+            <h6 class="heading">Search</h6>
+            <input type="text" name="search" [(ngModel)]  = "searchText" placeholder="Search By Location" class="form-control" aria-describedby="LocationHelp" placeholder="Search by Location or Contact Number">
+        </div>
+    </div>
+      <div class="table-responsive table-block">
+      <table class="table table-bordered">
+        <thead >
+          <tr>
+          <th scope="col">Location</th>
+          <th scope="col">ContactNumber</th>
+          <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of PharmacyData | filter:searchText" >
+            <td>{{row.Location}}</td>
+            <td>{{row.ContactNumber}}</td>
+            <td>
+              <input type="button" (click) = "setPharmacyData(row._id,row.Location,row.ContactNumber)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+              <input type="button" (click) = "deletePharmacyData(row._id)" value="Delete" class = "btn btn-outline-danger">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
+
+
+<!-- 
+
+<div class="container">
+
+ 
+</div> -->
 
 <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">

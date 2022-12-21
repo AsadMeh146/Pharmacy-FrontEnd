@@ -4,36 +4,38 @@ import { lastValueFrom } from 'rxjs';
 import { ManufacturerService } from 'src/app/Services/Admin/Manufacturer-Services/manufacturer.service';
 import { ShipperService } from 'src/app/Services/Admin/Shipper-Services/shipper.service';
 import { StockService } from 'src/app/Services/Admin/Stock-Services/stock.service';
-import { login_user } from 'src/app/class/user';
-
+import { SigninService } from 'src/app/Services/SignIn/signin.service';
 
 @Component({
   selector: 'app-order-stock',
   templateUrl: './order-stock.component.html',
   styleUrls: ['./order-stock.component.css'],
-
 })
 export class OrderStockComponent implements OnInit {
 
-  constructor(public manufacturerService:ManufacturerService,public shipperService:ShipperService,public productService:StockService,public stockService:StockService,public router:Router) {
+  constructor(public manufacturerService:ManufacturerService,public shipperService:ShipperService,public productService:StockService,public stockService:StockService,private signInService:SigninService,public router:Router) {
    }
+   getUserEmail:any
    disabledValue = false;
    myDate = new Date();
-  loginobj = login_user;
+  //get data
   manufacturers:any
   shippers:any
   products:any
   product:any
+  getUser:any
+  getPharmacyId:any
+
   indexOfObject:any
   orderProduct: Array<any> = [];
   getProducts:Array<any> = [];
-  // getProductQuantity:Array<any> = [];
-  getProductDetails:any
+  orderedProductDetails:any
   getSeletedManufacturerName:any
   selectedManufacturer:any
   selectedShipper:any
   selectedProduct:any
   updatedquantity:any
+
   public manufacturerId=""
   public shipperId=""
   public productId=""
@@ -43,9 +45,9 @@ export class OrderStockComponent implements OnInit {
   public productCategory=""
   public productStrength=""
   public quantity=""
-  public pharmacyId=String
   orderedProduct:any
   result:any
+  orderDetails:any
   orderManufacturer:any
   orderShipper:any
 
@@ -153,33 +155,28 @@ export class OrderStockComponent implements OnInit {
 
   async placeOrder()
   {
-    // this.orderedProduct = {
-    //   manufacturerId:this.orderProduct[i].manufacturerId,
-    //   shipperId:this.orderProduct[i].shipperId,
-    //   products:[this.orderProduct[i].productId],
-    // };
-    for(let i=0;i<this.orderProduct.length;i++)
-    {
-      this.getProductDetails = {
-        productId:this.orderProduct[i].productId,
-        productQuantity:this.orderProduct[i].quantity
-      }
-      this.getProducts.push(this.getProductDetails)
-      this.orderManufacturer = this.orderProduct[i].manufacturerId;
-      this.orderShipper = this.orderProduct[i].shipperId;
-    }
+    let getorderId = Math.floor(100000 + Math.random() * 900000); 
     this.orderedProduct = {
-      orderId:Math.floor(100000 + Math.random() * 900000),
-      manufacturerId:this.orderManufacturer,
-      shipperId:this.orderShipper,
-      productDetails:this.getProducts,
+      orderId:getorderId,
+      manufacturerId:this.manufacturerId,
+      shipperId:this.shipperId,
+      // productDetails:this.getProducts,
       orderDate:this.myDate,
       shipDate:null,
-      pharmacyId:this.pharmacyId
+      pharmacyId:this.getPharmacyId
     }
-    alert(this.orderedProduct.pharmacyId)
     this.result=await lastValueFrom(this.stockService.orderStockApi(this.orderedProduct))
     alert("Added")
+    for(let i=0;i<this.orderProduct.length;i++)
+    {
+      this.orderedProductDetails = {
+        stockOrderId:getorderId,
+        productId:this.orderProduct[i].productId,
+        quantity:parseInt(this.orderProduct[i].quantity)
+      }
+      this.orderDetails = await lastValueFrom(this.stockService.orderStockDetailsApi(this.orderedProductDetails))
+      alert(this.orderDetails)
+    }
     this.orderProduct = []
   }
   // get manufacturer,shipper and product from backend
@@ -204,7 +201,7 @@ export class OrderStockComponent implements OnInit {
         break;
       }
     }
-    this.products = await lastValueFrom(this.productService.getProductApi());
+    this.products = await lastValueFrom(this.productService.getProductApi(this.getPharmacyId));
     this.selectedProduct = this.products.filter(
       (product:any) => product.manufacturerName === this.getSeletedManufacturerName);
   }
@@ -215,9 +212,10 @@ export class OrderStockComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUser = this.signInService.getLoginUser();
+    this.getPharmacyId = this.getUser[0].PharmacyId;
     this.getManufacturer();
-    this.loginobj = login_user.GetInstance()
-    this.pharmacyId = this.loginobj.login_pharmacyId;
+    
   }
 
 }

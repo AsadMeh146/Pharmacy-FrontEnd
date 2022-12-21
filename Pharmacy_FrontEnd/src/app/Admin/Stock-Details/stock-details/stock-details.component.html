@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <!-- <img class="img-responsive" src="assets/Images/images.jpg"> -->
+    <div class="AddPharmacy">
+        <p id="label_size"> <b>Admin / </b>Edit Stock</p>
+        <div class="row myRow">
+          <div class="col-md-4">
+              <h6 class="heading">Search</h6>
+              <input type="text" name="search" [(ngModel)]  = "searchText" class="form-control" aria-describedby="LocationHelp" placeholder="Search by name or manufacturer">
+          </div>
+      </div>
+        <div class="table-responsive table-block">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+                <th scope="col">Manufacturer</th>
+              <th scope="col">Name</th>
+              <th scope="col">Category</th>
+              <th scope="col">Strength</th>
+              <th scope="col">Description</th>
+              <th scope="col">Manufacturing Date</th>
+              <th scope="col">Expiry Date</th>
+              <th scope="col">Unit Price</th>
+              <th scope="col">Sale Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of stock | filter:searchText" >
+                <td>{{product.manufacturerName}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.category.Name}}</td>
+                <td>{{product.strength}}</td>
+                <td>{{product.description}}</td>
+                <td>{{product.stockDetails.manufacturerDate}}</td>
+                <td>{{product.stockDetails.expiryDate}}</td>
+                <td>{{product.stockDetails.unitPrice}}</td>
+                <td>{{product.stockDetails.salePrice}}</td>
+                <td>{{product.stockDetails.quantity}}</td>
+                <input type="button" (click) = "deleteProduct(product.stockDetails._id)" value = "Delete" class = "btn btn-outline-danger">
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

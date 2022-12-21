@@ -26,7 +26,7 @@ export class AdminService {
      console.log(environment.baseUrl)
      console.log(environment.baseUrl + '/admin');
      console.log(formData)
-    this.http.post(environment.baseUrl + '/admin',formData).subscribe({next: (res:any) =>{
+    this.http.post(`${environment.baseUrl}/add-admin`,formData).subscribe({next: (res:any) =>{
       console.log(res)
     }});
     return 0;
@@ -49,7 +49,7 @@ export class AdminService {
 
   getAdminApi()
   {
-     return this.http.get(environment.baseUrl + '/view-admin')
+     return this.http.get(`${environment.baseUrl}/view-admin`)
     // return this.http.get(`${environment.baseUrl}/ViewPharmacyInfo`)
     //return this.http.get(`${environment.baseUrl}/view-admin`)
   }

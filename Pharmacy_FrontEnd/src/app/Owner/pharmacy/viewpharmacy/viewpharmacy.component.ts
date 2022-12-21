@@ -7,6 +7,7 @@ import { lastValueFrom } from 'rxjs';
 import {AddPharmacyDetailsService} from 'src/app/Services/Owner/Pharmacy/add-pharmacy-details.service';
 
 
+
 @Component({
   selector: 'app-viewpharmacy',
   templateUrl: './viewpharmacy.component.html',
@@ -15,6 +16,7 @@ import {AddPharmacyDetailsService} from 'src/app/Services/Owner/Pharmacy/add-pha
 
 
 export class ViewpharmacyComponent implements OnInit {
+  searchText:any
   PharmacyData: any;
   updatePharmacyData:any;
   deletePharmacyInfo : any;
@@ -22,6 +24,7 @@ export class ViewpharmacyComponent implements OnInit {
   Id : any;
   public Location = ""
   public ContactNumber = ""
+  
  
   constructor(public pharmacyService:AddPharmacyDetailsService,private router:Router,@Inject(DOCUMENT) document: Document) { }
   
@@ -51,6 +54,8 @@ export class ViewpharmacyComponent implements OnInit {
     }
     this.result=await lastValueFrom(this.pharmacyService.updatePharmacyApi(this.Id,this.updatePharmacyData))
     alert("Updated Successfully");
+    this.Location = "";
+    this.ContactNumber = "";
     this.getPharmacies();
   }
 
@@ -64,7 +69,7 @@ export class ViewpharmacyComponent implements OnInit {
       this.getPharmacies();
     }
   }
-  
+
   ngOnInit(): void {
        this.getPharmacies();
       }

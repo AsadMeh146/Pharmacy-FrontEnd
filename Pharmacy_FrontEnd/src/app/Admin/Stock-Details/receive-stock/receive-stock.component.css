@@ -1,0 +1,45 @@
+.signUpBlock{
+    margin-left: 25%;
+    margin-right: 25%;
+    background-color: whitesmoke;
+    margin-top: 100px;
+    border-radius: 10px;
+    padding-top: 20px;
+  
+  }
+  .orderStock{
+    background-color: whitesmoke;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding-top: 20px;
+  
+  }
+  
+  .signUp{
+    padding-left: 20px;
+    margin-top: 20px;
+  }
+  .myRow{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    text-align: left;
+  }
+  .heading{
+    font-size: 15px;
+    font-weight: normal;
+  }
+  .buttonBlock{
+    text-align: center;
+  }
+  .text-center
+  {
+    padding-bottom: 20px;
+  }
+  #label_size
+  {
+      font-size: 25px;
+      padding-left: 25px;
+  }
+  
+  

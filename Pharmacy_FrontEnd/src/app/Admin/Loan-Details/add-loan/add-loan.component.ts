@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { lastValueFrom, VirtualTimeScheduler } from 'rxjs';
 import {LoanService} from 'src/app/Services/Admin/Loan-Services/loan.service';
 import {AdminService} from 'src/app/Services/Owner/Admin/admin.service';
-import {login_user} from 'src/app/class/user';
 
+import { SigninService } from 'src/app/Services/SignIn/signin.service';
 
 @Component({
   selector: 'app-add-loan',
@@ -12,19 +12,19 @@ import {login_user} from 'src/app/class/user';
   styleUrls: ['./add-loan.component.css']
 })
 export class AddLoanComponent implements OnInit {
-  AddAdminService: any;
-  loginobj = login_user;
-  nametodisplay = String;
+  
 
-  constructor(public AddLoanService:LoanService,AddAdminService:AdminService,private router:Router) {
+
+  constructor(public AddLoanService:LoanService,public AddAdminService:AdminService,private signInService:SigninService,private router:Router) {
 
   }
+  
   AdminData:any
   loan:any
   result:any
-
   // curr_arr:any
   loans:any
+    public getUserEmail:any
     public email=""
     public Purpose=""
     public AmountRequested=""
@@ -45,7 +45,7 @@ export class AddLoanComponent implements OnInit {
       }
     }
     this.loan={
-      email:this.nametodisplay,
+      email:this.getUserEmail,
       Purpose:this.Purpose,
       AmountRequested:this.AmountRequested,
       ApplyDate:this.ApplyDate,
@@ -54,6 +54,11 @@ export class AddLoanComponent implements OnInit {
     this.result= await lastValueFrom(this.AddLoanService.AddLoanApi(this.loan))
     if(this.result){
       alert("Request Added successfully")
+      this.getUserEmail = "",
+      this.Purpose = "",
+      this.AmountRequested = "",
+      this.ApplyDate = "",
+      this.loanstatus = "",
        this.router.navigate([''])
     }
     else{
@@ -61,9 +66,10 @@ export class AddLoanComponent implements OnInit {
     }
   }
 
-  async getAdmin(){
-    this.AdminData=await lastValueFrom(this.AddAdminService.getAdminApi())
-  }
+  // async getAdmin(){
+  //   this.AdminData=await lastValueFrom(this.AddAdminService.getAdminApi())
+  // }
+
   async getloanStatus()
   {
     this.loans = await lastValueFrom(this.AddLoanService.get_loanstatusApi());
@@ -77,10 +83,11 @@ export class AddLoanComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.loginobj = login_user.GetInstance()
-    this.nametodisplay = this.loginobj.login_email
+
+    this.getUserEmail = this.signInService.getLoginUser();
+    this.getUserEmail = this.getUserEmail[0].Email;
     this.getloanStatus();
-    // this.getUserName();
+
   }
 
 }

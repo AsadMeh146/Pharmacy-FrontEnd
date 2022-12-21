@@ -11,6 +11,7 @@ export class AddPharmacyDetailsService {
   constructor(private http:HttpClient) { }
 
   addPharmacyApi(pharmacy:any){
+    console.log("hii");
      return this.http.post(`${environment.baseUrl}/add-pharmacy`,pharmacy) 
   }
   
@@ -18,8 +19,6 @@ export class AddPharmacyDetailsService {
   {
     return this.http.get(`${environment.baseUrl}/view-pharmacy`)
   }
-
-  
   updatePharmacyApi(Id:any,pharmacy:any){
     return this.http.put(`${environment.baseUrl}/view-pharmacy/${Id}`,pharmacy)
   }

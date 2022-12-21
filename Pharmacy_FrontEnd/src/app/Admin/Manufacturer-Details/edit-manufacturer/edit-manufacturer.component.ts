@@ -14,6 +14,7 @@ export class EditManufacturerComponent implements OnInit {
   manufacturers:any
   manufacturer_update:any
   result:any
+  searchText:any
   public name=""
   public email=""
   public address=""
@@ -31,7 +32,8 @@ export class EditManufacturerComponent implements OnInit {
     if(confirm('Are you sure to delete the record ?') == true)
     {
       this.manufacturer_delete=await lastValueFrom(this.ManufacturerService.deleteManufacturerApi(manufacturerId))
-      alert("Successfully")
+      alert("Successfully");
+      this.getManufaturers();
     }
   }
   setManufacturerValues(manufacturerId:any,manufacturerName:any,manufacturerContact:any,manufacturerAddress:any,manufacturerEmail:any)
@@ -55,6 +57,12 @@ export class EditManufacturerComponent implements OnInit {
       contact:this.contact,
     }
     this.result=await lastValueFrom(this.ManufacturerService.updateManufacturerApi(this.manufacturerId,this.manufacturer_update))
+    alert("Updated successfully");
+    this.name = "";
+    this.email = "";
+    this.address = "";
+    this.contact = "";
+    this.getManufaturers();
   }
 
   ngOnInit(): void {

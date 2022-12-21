@@ -26,6 +26,11 @@ import { ViewloanComponent } from './Owner/viewloan/viewloan.component';
 import { ViewAdminComponent } from './Owner/Admin-Details/view-admin/view-admin.component';
 import { ViewEmployeeComponent } from './Admin/Employee-Details/view-employee/view-employee.component';
 import { AddcustomerComponent } from './Employee/CustomerDetail/addcustomer/addcustomer.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { StockDetailsComponent } from './Admin/Stock-Details/stock-details/stock-details.component';
+import { OwnerSidebarComponent } from './Owner/ownerSidebar/owner-sidebar/owner-sidebar.component';
+import { AdminDashboardComponent } from './Owner/ownerSidebar/admin-dashboard/admin-dashboard.component';
+import { ShowStockComponent } from './Employee/show-stock/show-stock.component';
 
 
 @NgModule({
@@ -55,14 +60,19 @@ import { AddcustomerComponent } from './Employee/CustomerDetail/addcustomer/addc
     ViewpharmacyComponent,
     AdminComponent,
     AddEmployeeComponent,
-    AddcustomerComponent
+    AddcustomerComponent,
+    StockDetailsComponent,
+    OwnerSidebarComponent,
+    AdminDashboardComponent,
+    ShowStockComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

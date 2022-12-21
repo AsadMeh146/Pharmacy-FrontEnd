@@ -1,50 +1,60 @@
-<div class="container">
-    <table class="table mt-3">
-        <thead >
-          <tr>
-          <th scope="col">Image</th>
-          <th scope="col">Name</th>
-          <th scope="col">CNIC</th>
-          <th scope="col">Salary</th>
-          <th scope="col">Designation</th>
-          <th scope="col">DateOfBirth</th>
-          <th scope="col">Address</th>
-          <th scope="col">PharmacyId</th>
-          <th scope="col">Status</th>
-          <th scope="col">HireDate</th>
-          <th scope="col">Email</th>
-          <th scope="col">ContactNumber</th>
-          <!-- <th scope="col">Actions</th> -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let row of AdminData ">
-            <td> 
-              <img style= "height:80px; width: 80px" [src] = "'http://localhost:8001/'+'upload-files/'+row.Image">
-            </td>
-            <td>{{row.Name}}</td>
-            <td>{{row.CNIC}}</td>
-            <td>{{row.Salary}}</td>
-            <td>{{row.Designation.Name}}</td>
-            <td>{{row.DateOfBirth}}</td>
-            <td>{{row.Address}}</td>
-            <td>{{row.Pharmacy.Location}}</td>
-            <!-- <td>{{row.pharmacyRequests.Location}}}</td> -->
-            <td>{{row.Status.Name}}</td>
-            <td>{{row.HireDate}}</td>
-            <td>{{row.Email}}</td>
-            <td>{{row.ContactNumber}}</td>
-            <td>
-                <input type ="button" (click) = "setAdminData(row._id,row.Name,row.CNIC,row.Salary,row.DateOfBirth,row.Address,row.PharmacyId,row.Status,row.HireDate,row.Email,row.ContactNumber)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
-              <input type ="button"  (click) = "deleteAdminData(row._id)" value="Delete" class = "btn btn-outline-danger">
-          
-          </td>
-        
 
-        </tbody>
-      </table>
-     
+<div class="container-fluid">
+    <!-- <img class="img-responsive" src="assets/Images/images.jpg"> -->
+    <div class="AddPharmacy">
+        <p id="label_size"> <b>Owner / </b>Edit Admin </p>
+        <div class="row myRow">
+          <div class="col-md-4">
+              <h6 class="heading">Search</h6>
+              <input type="text" name="search" [(ngModel)]  = "searchText" class="form-control" aria-describedby="LocationHelp" placeholder="Search by name or email">
+          </div>
+      </div>
+        <div class="table-responsive table-block">
+        <table class="table table-bordered">
+            <thead >
+                <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">CNIC</th>
+                <th scope="col">Salary</th>
+                <th scope="col">Designation</th>
+                <th scope="col">DateOfBirth</th>
+                <th scope="col">Address</th>
+                <th scope="col">PharmacyId</th>
+                <th scope="col">Status</th>
+                <th scope="col">HireDate</th>
+                <th scope="col">Email</th>
+                <th scope="col">ContactNumber</th>
+                <th scope="col">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let row of AdminData | filter:searchText">
+                  <td> 
+                    <img style= "height:80px; width: 80px;border-radius: 45px;" [src] = "'http://localhost:8001/'+'upload-files/'+row.Image">
+                  </td>
+                  <td>{{row.Name}}</td>
+                  <td>{{row.CNIC}}</td>
+                  <td>{{row.Salary}}</td>
+                  <td>{{row.Designation.Name}}</td>
+                  <td>{{row.DateOfBirth}}</td>
+                  <td>{{row.Address}}</td>
+                  <td>{{row.Pharmacy.Location}}</td>
+                  <!-- <td>{{row.pharmacyRequests.Location}}}</td> -->
+                  <td>{{row.Status.Name}}</td>
+                  <td>{{row.HireDate}}</td>
+                  <td>{{row.Email}}</td>
+                  <td>{{row.ContactNumber}}</td>
+                  <td>
+                      <input type ="button" (click) = "setAdminData(row._id,row.Name,row.CNIC,row.Salary,row.DateOfBirth,row.Address,row.PharmacyId,row.Status,row.HireDate,row.Email,row.ContactNumber)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+                    <input type ="button"  (click) = "deleteAdminData(row._id)" value="Delete" class = "btn btn-outline-danger">
+                
+                </td>
+              </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
@@ -62,7 +72,7 @@
                               </div>
                               <div class="col-md-6">
                                   <h6 class="heading">CNIC.</h6>
-                                  <input [(ngModel)]="CNIC" [ngModelOptions]="{standalone:true}" type="cnic" class="form-control" id="exampleInputCNIC" aria-describedby="CNICHelp" placeholder="Enter CNIC" required>
+                                  <input [(ngModel)]="CNIC" [ngModelOptions]="{standalone:true}" pattern="[0-9]{5}-[0-9]{7}-[0-9]{1}" maxlength="13" mask="00000-0000000-0" type="cnic" class="form-control" id="exampleInputCNIC" aria-describedby="CNICHelp" placeholder="Enter CNIC" required>
                               </div>
                           </div>
                           <div class="row myRow" >

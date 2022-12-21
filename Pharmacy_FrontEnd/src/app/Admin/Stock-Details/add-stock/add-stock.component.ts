@@ -5,6 +5,7 @@ import { StockService } from 'src/app/Services/Admin/Stock-Services/stock.servic
 import { ManufacturerService } from 'src/app/Services/Admin/Manufacturer-Services/manufacturer.service';
 import { LookupService } from 'src/app/Services/Lookup/lookup.service';
 import { login_user } from 'src/app/class/user';
+import { SigninService } from 'src/app/Services/SignIn/signin.service';
 @Component({
   selector: 'app-add-stock',
   templateUrl: './add-stock.component.html',
@@ -14,16 +15,17 @@ export class AddStockComponent implements OnInit {
   stock:any
   result:any
   manufacturers:any
-  loginobj = login_user;
-
+  pharmacyId:any
+  getUser:any
+  products:any
   productCategories:any
+  isTrue = false;
   public name=""
   public category=""
   public description=""
   public strength=""
   public manufacturerName=""
-  public pharmacyId = String;
-  constructor(public StockService:StockService,public ManufacturerService:ManufacturerService,public LookupService:LookupService,private router:Router) { }
+  constructor(public StockService:StockService,public signInService:SigninService,public ManufacturerService:ManufacturerService,public LookupService:LookupService,private router:Router) { }
   async getManufaturers(){
     this.manufacturers=await lastValueFrom(this.ManufacturerService.getManufacturerApi())
   }
@@ -31,25 +33,89 @@ export class AddStockComponent implements OnInit {
     this.productCategories=await lastValueFrom(this.LookupService.getProductCategoryApi())
   };
   async handleSubmit(){
-    this.stock={
-      name:this.name,
-      category:this.category,
-      strength:this.strength,
-      description:this.description,
-      manufacturerName:this.manufacturerName,
-      pharmacyId:this.pharmacyId
+    if(this.products.length > 0 )
+    {
+      for(let i=0;i<this.products.length;i++)
+    {      
+        if(this.name != this.products[i].name || this.category != this.products[i].category._id || this.strength != this.products[i].strength && this.manufacturerName == this.products[i].manufacturerName &&this.pharmacyId == this.products[i].pharmacyId)
+        {
+          this.isTrue = true;
+
+        }
+        else if(this.name == this.products[i].name && this.category == this.products[i].category._id && this.strength == this.products[i].strength && this.manufacturerName == this.products[i].manufacturerName &&this.pharmacyId == this.products[i].pharmacyId)
+        {
+          alert("Product already exists");
+          this.isTrue = false;
+          break;
+        }
+      
     }
-    this.result=await lastValueFrom(this.StockService.registerStockApi(this.stock))
-    if(this.result){
-      alert("Stock is registered successfully")
+    if(this.isTrue == true)
+    {
+      this.stock={
+        name:this.name,
+        category:this.category,
+        strength:this.strength,
+        description:this.description,
+        manufacturerName:this.manufacturerName,
+        pharmacyId:this.pharmacyId
+      }
+      this.result=await lastValueFrom(this.StockService.registerStockApi(this.stock))
+      if(this.result){
+        alert("Stock is registered successfully")
+        this.name = "",
+        this.category = "",
+        this.strength = "",
+        this.description = "",
+        this.manufacturerName = "",
+        this.getProducts();
+  
+      }
     }
+    
     else{
-      alert("Ooops Error")
+      alert("Invalid input. Try Again")
+      this.name = "",
+      this.category = "",
+      this.strength = "",
+      this.description = "",
+      this.manufacturerName = "",
+      this.getProducts();
     }
+    }
+    else if(this.products.length == 0)
+    {
+      this.stock={
+        name:this.name,
+        category:this.category,
+        strength:this.strength,
+        description:this.description,
+        manufacturerName:this.manufacturerName,
+        pharmacyId:this.pharmacyId
+      }
+      this.result=await lastValueFrom(this.StockService.registerStockApi(this.stock))
+      if(this.result){
+        alert("Stock is registered successfully")
+        this.name = "",
+        this.category = "",
+        this.strength = "",
+        this.description = "",
+        this.manufacturerName = "",
+        this.getProducts();
+  
+      }
+    }
+    
   }
+  async getProducts()
+  {
+    this.products=await lastValueFrom(this.StockService.getProductApi(this.pharmacyId))
+  }
+
   ngOnInit(): void {
-    this.loginobj = login_user.GetInstance()
-    this.pharmacyId = this.loginobj.login_pharmacyId;
+    this.getUser = this.signInService.getLoginUser();
+    this.pharmacyId = this.getUser[0].PharmacyId;
+    this.getProducts();
     this.getManufaturers();
     this.getProductCategory();
   }

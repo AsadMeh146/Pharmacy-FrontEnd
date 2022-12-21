@@ -4,6 +4,7 @@ import { lastValueFrom } from 'rxjs';
 import { StockService } from 'src/app/Services/Admin/Stock-Services/stock.service';
 import { ManufacturerService } from 'src/app/Services/Admin/Manufacturer-Services/manufacturer.service';
 import { LookupService } from 'src/app/Services/Lookup/lookup.service';
+import { SigninService } from 'src/app/Services/SignIn/signin.service';
 
 @Component({
   selector: 'app-edit-stock',
@@ -17,6 +18,8 @@ export class EditStockComponent implements OnInit {
   product_delete:any
   product_update:any
   result:any
+  pharmacyId:any
+  getUser:any
 
   public productId=""
   public name=""
@@ -25,13 +28,13 @@ export class EditStockComponent implements OnInit {
   public manufacturerName=""
   public categoryId=""
   public categoryName=""
-  public pharmacyId = ""
+  searchText:any
 
 
-  constructor(public StockService:StockService,public ManufacturerService:ManufacturerService,public LookupService:LookupService,private router:Router) { }
+  constructor(public StockService:StockService,public signInService:SigninService,public ManufacturerService:ManufacturerService,public LookupService:LookupService,private router:Router) { }
   async getProducts()
   {
-    this.products=await lastValueFrom(this.StockService.getProductApi())
+    this.products=await lastValueFrom(this.StockService.getProductApi(this.pharmacyId))
   }
   async getManufaturers(){
     this.manufacturers=await lastValueFrom(this.ManufacturerService.getManufacturerApi())
@@ -44,7 +47,8 @@ export class EditStockComponent implements OnInit {
     if(confirm('Are you sure to delete the record ?') == true)
     {
       this.product_delete=await lastValueFrom(this.StockService.deleteProductApi(productId))
-      alert("Successfully")
+      alert("Successfully");
+      this.getProducts();
     }
   }
   async updateProduct()
@@ -70,6 +74,8 @@ export class EditStockComponent implements OnInit {
     }
     alert(this.product_update.manufacturerName)
     this.result=await lastValueFrom(this.StockService.updateProductApi(this.productId,this.product_update))
+    alert("Update Successfully");
+    this.getProducts();
   }
   async setProductValues(productId:any,productName:any,productCategory:any,productStrength:any,productDescription:any,productManufacturer:any,pharmacyId:any)
   {
@@ -83,6 +89,8 @@ export class EditStockComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getUser = this.signInService.getLoginUser();
+    this.pharmacyId = this.getUser[0].PharmacyId;
     this.getProducts();
     this.getManufaturers();
     this.getProductCategory();

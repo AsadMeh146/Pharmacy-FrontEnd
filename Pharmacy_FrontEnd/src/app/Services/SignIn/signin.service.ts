@@ -6,10 +6,18 @@ import { environment } from './../../../environments/environment';
   providedIn: 'root'
 })
 export class SigninService {
-
+  loginUser:any
   constructor(private http:HttpClient) { }
   findUserLogin(credentials:any)
   {
     return this.http.get(`${environment.baseUrl}/signin/${credentials.email}/${credentials.password}`);
+  }
+  setLoginUser(user:any)
+  {
+    this.loginUser = user;
+  }
+  getLoginUser()
+  {
+    return this.loginUser;
   }
 }

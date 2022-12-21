@@ -17,23 +17,103 @@ export class AddManufacturerComponent implements OnInit {
   public email=""
   public address=""
   public contact=""
+  manufacturers:any
+  isTrue = false;
+
+  async getManufaturers(){
+    this.manufacturers=await lastValueFrom(this.ManufacturerService.getManufacturerApi())
+  }
   async handleSubmit(){
-    this.user={
-      name:this.name,
-      email:this.email,
-      address:this.address,
-      contact:this.contact
+    if(this.manufacturers.length > 0)
+    {
+      for(let i=0;i<this.manufacturers.length;i++)
+    {
+      alert("Checking")
+        if(this.name != this.manufacturers[i].name)
+        {
+          if(this.email != this.manufacturers[i].email)
+          {
+            if(this.contact != this.manufacturers[i].contact)
+            {
+              this.isTrue = true;
+              
+            }
+            else
+            {
+              alert("Contact Number already exists");
+              this.isTrue = false;
+              break;
+            }
+          }
+          else
+          {
+            alert("Email already exists");
+            this.isTrue = false;
+            break;
+          }
+
+        }
+        else
+        {
+          alert("Manufacturer already exists");
+          this.isTrue = false;
+          break;
+        }
+      
     }
-    this.result=await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
-    if(this.result){
-      alert("User is registered successfully")
+    if(this.isTrue == true)
+    {
+      this.user={
+        name:this.name,
+        email:this.email,
+        address:this.address,
+        contact:this.contact
+      }
+      this.result=await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
+      if(this.result){
+        alert("User is registered successfully")
+        this.name = "";
+        this.email = "";
+        this.address = "";
+        this.contact = "";
+        this.getManufaturers();
+
+      }
+      else{
+        alert("Invalid input. Try Again")
+      }
     }
-    else{
-      alert("Ooops Error")
+
     }
+    else if(this.manufacturers.length == 0)
+    {
+      this.user={
+        name:this.name,
+        email:this.email,
+        address:this.address,
+        contact:this.contact
+      }
+      this.result=await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
+      if(this.result){
+        alert("User is registered successfully")
+        this.name = "";
+        this.email = "";
+        this.address = "";
+        this.contact = "";
+        this.getManufaturers();
+
+      }
+      else{
+        alert("Invalid input. Try Again")
+      }
+    }
+    
+    
+    
   }
 
   ngOnInit(): void {
+    this.getManufaturers();
   }
 
 }

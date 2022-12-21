@@ -1,48 +1,45 @@
-.Name{
-    margin-left: 20%;
-    margin-right: 27%;
-    margin-top: 75px;
-    margin-bottom: 10px;
-}
-.AddPharmacy{
-    margin-left: 27%;
-    margin-right: 27%;
+.signUpBlock{
+    margin-left: 25%;
+    margin-right: 25%;
     background-color: whitesmoke;
     margin-top: 100px;
     border-radius: 10px;
-    text-align: left;
     padding-top: 20px;
-}
-.rowContainer
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.myRow{
+  
+  }
+  .orderStock{
+    background-color: whitesmoke;
+    margin-top: 30px;
+    border-radius: 10px;
+    padding-top: 20px;
+  
+  }
+  
+  .signUp{
+    padding-left: 20px;
+    margin-top: 20px;
+  }
+  .myRow{
     display: flex;
     flex-direction: row;
-    margin-top: 12px;
-    margin-bottom: 5px;
+    margin-top: 10px;
     text-align: left;
-}
-
-.buttonBlock{
+  }
+  .heading{
+    font-size: 15px;
+    font-weight: normal;
+  }
+  .buttonBlock{
     text-align: center;
-}
-
-.text-center
-{
+  }
+  .text-center
+  {
     padding-bottom: 20px;
-}
-
-.buttonBlock{
-   
-    font-weight: bold;
-   
-}
-.img-responsive{
-    background-size: 100 100;
-}
+  }
+  #label_size
+  {
+      font-size: 25px;
+      padding-left: 25px;
+  }
+  
+  

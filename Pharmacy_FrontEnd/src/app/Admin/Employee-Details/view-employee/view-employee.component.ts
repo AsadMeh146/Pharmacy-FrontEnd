@@ -6,6 +6,7 @@ import { DOCUMENT } from '@angular/common';
 import { lastValueFrom } from 'rxjs';
 import {AdminService} from 'src/app/Services/Owner/Admin/admin.service';
 import { AddPharmacyDetailsService } from 'src/app/Services/Owner/Pharmacy/add-pharmacy-details.service';
+import { SigninService } from 'src/app/Services/SignIn/signin.service';
 
 
 @Component({
@@ -16,7 +17,10 @@ import { AddPharmacyDetailsService } from 'src/app/Services/Owner/Pharmacy/add-p
 export class ViewEmployeeComponent implements OnInit {
 employeeData:any
 getEmployee:any
+searchText:any
 pharmacies:any
+pharmacyId:any
+getUser:any
 designations:any
 statuses:any
 deleteEmployeeInfo:any
@@ -34,11 +38,11 @@ result:any
   public HireDate=""
   public Email=""
   public ContactNumber=""
-  constructor(public EmployeeService:EmployeeService,private router:Router ,public AdminService:AdminService,public AddPharmacyDetailsService:AddPharmacyDetailsService,@Inject(DOCUMENT) document: Document) { }
+  constructor(public EmployeeService:EmployeeService,public signInService:SigninService,private router:Router ,public AdminService:AdminService,public AddPharmacyDetailsService:AddPharmacyDetailsService,@Inject(DOCUMENT) document: Document) { }
 
   async getEmployeeData(){
    
-    this.getEmployee=await lastValueFrom(this.EmployeeService.getEmployeeApi())
+    this.getEmployee=await lastValueFrom(this.EmployeeService.getEmployeeApi(this.pharmacyId))
     function isBigEnough(getEmployee:any) { 
       return (getEmployee.Designation.Name != "Admin"); 
    } 
@@ -118,7 +122,19 @@ result:any
 
       this.result=await lastValueFrom(this.EmployeeService.updateEmployeeApi(this.Id,this.updateEmployeeData))
       alert("Updated Successfully");
+      this.Name=""
+      this.CNIC=""
+      this.Salary=""
+      this.Designation=""
+      this.DateOfBirth=""
+      this.Address=""
+      this.PharmacyId=""
+      this.Status=""
+      this.HireDate=""
+      this.Email=""
+      this.ContactNumber=""
       this.getEmployeeData();
+     
     }
     async getPharmacy(){
       this.pharmacies=await lastValueFrom(this.AddPharmacyDetailsService.getPharmacyApi())
@@ -136,6 +152,8 @@ result:any
    }
 
   ngOnInit(): void {
+    this.getUser = this.signInService.getLoginUser();
+    this.pharmacyId = this.getUser[0].PharmacyId;
     this.getEmployeeData();
     this.getPharmacy();
     this.getStatus();

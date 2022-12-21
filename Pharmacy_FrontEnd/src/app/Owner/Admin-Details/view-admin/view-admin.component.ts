@@ -23,6 +23,7 @@ export class ViewAdminComponent implements OnInit {
   updateAdminData:any;
   result:any
   Id : any
+  searchText:any
   public Name=""
   public CNIC=""
   public Salary=""
@@ -34,6 +35,7 @@ export class ViewAdminComponent implements OnInit {
   public HireDate=""
   public Email=""
   public ContactNumber=""
+  public isTrue = false;
   constructor(public AdminService:AdminService,private router:Router ,public AddPharmacyDetailsService:AddPharmacyDetailsService,public LookupService:LookupService) { }
 
   async getAdminData(){
@@ -113,7 +115,6 @@ export class ViewAdminComponent implements OnInit {
 
  async updateAdminDetails()
     {
-      console.log("updated!");
       this.updateAdminData={
         Name:this.Name,
         CNIC:this.CNIC,
@@ -127,9 +128,19 @@ export class ViewAdminComponent implements OnInit {
         Email:this.Email,
         ContactNumber:this.ContactNumber,
       }
-
       this.result=await lastValueFrom(this.AdminService.updateAdminApi(this.Id,this.updateAdminData))
       alert("Updated Successfully");
+      this.Name=""
+      this.CNIC=""
+      this.Salary=""
+      this.Designation=""
+      this.DateOfBirth=""
+      this.Address=""
+      this.PharmacyId=""
+      this.Status=""
+      this.HireDate=""
+      this.Email=""
+      this.ContactNumber=""
       this.getAdminData();
     }
   

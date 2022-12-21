@@ -37,19 +37,25 @@ export class EmployeeService {
   get_designationApi(){
     console.log("")
      return this.http.get(`${environment.baseUrl}/get-designation/admin-designation`)
-   
   }
   get_statusApi(){
     console.log("")
      return this.http.get(`${environment.baseUrl}/get-status/admin-status`)
    
   }
-  getEmployeeApi()
+  getEmployeeApi(pharmacyId:any)
   {
     
-    return this.http.get(environment.baseUrl + '/view-employee')
+    // return this.http.get(environment.baseUrl + '/view-employee/${}')
     // return this.http.get(`${environment.baseUrl}/ViewPharmacyInfo`)
-    //return this.http.get(`${environment.baseUrl}/view-admin`)
+    return this.http.get(`${environment.baseUrl}/view-employee/${pharmacyId}`)
+  }
+  getUserApi()
+  {
+    
+    // return this.http.get(environment.baseUrl + '/view-employee/${}')
+    // return this.http.get(`${environment.baseUrl}/ViewPharmacyInfo`)
+    return this.http.get(`${environment.baseUrl}/view-user`)
   }
  
   deleteEmployeeApi(Id:any){

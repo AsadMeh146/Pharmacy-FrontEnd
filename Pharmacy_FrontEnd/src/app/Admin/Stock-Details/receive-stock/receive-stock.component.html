@@ -1,1 +1,88 @@
-<p>receive-stock works!</p>
+<div class="container-fluid">
+  <div class="signUpBlock">
+      <p id="label_size"> <b>Admin / </b> Receive Stock </p>
+      <form action="" ngNativeValidate (ngSubmit)="handleSubmit()">
+          <div class="m-4">
+              <div class="row myRow" >
+                  <div class="col-md-6">
+                    <h6 class="heading">Order Id</h6>
+                    <input [(ngModel)]="orderId" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="exampleInputaddress" aria-describedby="addressHelp" placeholder="Enter Order Id" required>
+                </div>
+                <div class="col-md-6 buttonBlock">
+                  <button class="btn btn-outline-primary mt-4 mb-4">Search</button>
+                </div>
+              </div>
+          </div>
+      </form>
+      <div class="orderStock">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Manufacturer</th>
+              <th scope="col">Shipper</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of stockOrder" >
+              <td>{{product.ManufacturerDetail.name}}</td>
+              <td>{{product.ShipperDetail.name}}</td>
+              <td>{{product.product_category.Name + " " + product.product_details.name + " " + product.product_details.strength}}</td>
+              <td>{{product.products.quantity}}</td>
+              <input type="button" (click) = "setProductValue(product._id,product.ManufacturerDetail._id,product.ManufacturerDetail.name,product.product_details._id,product.product_details.name,product.products.quantity)" data-toggle="modal" data-target="#updateModal" value = "Update" class = "btn btn-outline-primary">
+            </tr>
+          </tbody>
+        </table>
+
+
+      </div>
+      <form action="" ngNativeValidate (ngSubmit)="receiveOrder()">
+      <div class="row myRow" >
+        <div class="col-md-12 buttonBlock">
+          <button class="btn btn-outline-primary mt-4 mb-4">Receive Order</button>
+        </div>
+    </div>
+  </form>
+  </div>
+
+</div>
+
+<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title" id="myModalLabel">Update Stock Order</h4>
+          </div>
+          <form action="" ngNativeValidate (ngSubmit)="updateStock()">
+              <div class="modal-body">
+            <div class=" form-group">
+              <label class="focus-label">Manufacturing Date</label>
+              <input [(ngModel)]="manufacturerDate" [ngModelOptions]="{standalone:true}" type="date" name="manufacturerDate" class="form-control" id="exampleInputmanufacturingDate" aria-describedby="addressHelp" required>
+          </div>
+          <div class=" form-group">
+            <label class="focus-label">Expiry Date</label>
+            <input [(ngModel)]="expiryDate" [ngModelOptions]="{standalone:true}" type="date" name="expiryDate" class="form-control" id="exampleInputexpiryDate" aria-describedby="addressHelp" required>
+        </div>
+        <div class=" form-group">
+          <label class="focus-label">Unit Price</label>
+          <input [(ngModel)]="unitPrice" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="exampleInputunitPrice" aria-describedby="addressHelp" placeholder="Enter Unit Price" required>
+      </div>
+      <div class=" form-group">
+        <label class="focus-label">Sale Price</label>
+        <input [(ngModel)]="salePrice" [ngModelOptions]="{standalone:true}" type="text" class="form-control" id="exampleInputsalePrice" aria-describedby="addressHelp" placeholder="Enter Sale Price" required>
+        
+    </div>
+            </div>
+              <div class="modal-footer">
+                  <button type="submit" name="savedata" id="sub-button" class="btn btn-primary">Save changes</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+
+

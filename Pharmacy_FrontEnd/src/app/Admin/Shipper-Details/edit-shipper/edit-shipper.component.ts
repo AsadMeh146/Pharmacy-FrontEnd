@@ -19,6 +19,7 @@ export class EditShipperComponent implements OnInit {
   shippers:any
   shipper_update:any
   result:any
+  searchText:any
   public name=""
   public email=""
   public address=""
@@ -44,6 +45,7 @@ export class EditShipperComponent implements OnInit {
     {
       this.shipper_delete=await lastValueFrom(this.ShipperService.deleteShipperApi(shipperId))
       alert("Successfully")
+      this.getShippers();
     }
   }
   async updateShipper()
@@ -67,6 +69,13 @@ export class EditShipperComponent implements OnInit {
       contact:this.contact,
     }
     this.result=await lastValueFrom(this.ShipperService.updateShipperApi(this.shipperId,this.shipper_update))
+    alert("Updated Successfully");
+    this.name = "";
+    this.email = "";
+    this.address = "";
+    this.contact = "";
+    this.manufacturerId = "";
+    this. getShippers();
   }
   async setShipper(shipperId:any,shipperName:any,manufacturerId:any,shipperContact:any,shipperAddress:any,shipperEmail:any)
   {
