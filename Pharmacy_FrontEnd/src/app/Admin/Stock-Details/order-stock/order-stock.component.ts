@@ -166,7 +166,7 @@ export class OrderStockComponent implements OnInit {
       pharmacyId:this.getPharmacyId
     }
     this.result=await lastValueFrom(this.stockService.orderStockApi(this.orderedProduct))
-    alert("Added")
+    
     for(let i=0;i<this.orderProduct.length;i++)
     {
       this.orderedProductDetails = {
@@ -175,8 +175,8 @@ export class OrderStockComponent implements OnInit {
         quantity:parseInt(this.orderProduct[i].quantity)
       }
       this.orderDetails = await lastValueFrom(this.stockService.orderStockDetailsApi(this.orderedProductDetails))
-      alert(this.orderDetails)
     }
+    alert("Order placed successfully");
     this.orderProduct = []
   }
   // get manufacturer,shipper and product from backend

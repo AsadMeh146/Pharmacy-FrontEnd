@@ -268,24 +268,16 @@ export class AddcustomerComponent implements OnInit {
   async getStock()
   {
     this.stock = await lastValueFrom(this.customerOrderService.getStockApi(this.pharmacyId))
+    this.uniqueStock = this.stock.filter((item:any, index:any, self:any) => self.indexOf(item) === index)
+  
   }
-  async removeStock()
-  {
-    for(let i=0;i<this.stock.length;i++)
-    {
-      if(this.stock[0]._id != this.uniqueStock[0]._id)
-      {
-        this.uniqueStock.push(this.stock[0]);
-      }
-    }
-
-  }
+  
   
   ngOnInit(): void {
     this.getUser = this.signInService.getLoginUser();
     this.pharmacyId = this.getUser[0].PharmacyId; 
     this.getStock();
-    this.removeStock();
+    
   }
 
 }

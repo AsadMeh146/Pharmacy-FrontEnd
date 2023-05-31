@@ -26,7 +26,7 @@ export class EmployeeService {
      console.log(environment.baseUrl)
      console.log(environment.baseUrl + '/admin');
      console.log(formData)
-    this.http.post(environment.baseUrl + '/admin',formData).subscribe({next: (res:any) =>{
+    this.http.post(`${environment.baseUrl}/add-employee`,formData).subscribe({next: (res:any) =>{
       console.log(res)
     }});
     return 0;

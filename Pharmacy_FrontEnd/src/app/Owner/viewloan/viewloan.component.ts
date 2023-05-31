@@ -22,8 +22,11 @@ export class ViewloanComponent implements OnInit {
 
   constructor(public adminLoan : LoanService, public LookupService:LookupService,private router:Router,@Inject(DOCUMENT) document: Document) { }
   async getloanData(){
-    this.loanData=await lastValueFrom(this.adminLoan.getLoanDataApi())
+    this.loanData=await lastValueFrom(this.adminLoan.getLoanDataApi());
+    this.loanData = this.loanData.filter(
+      (product:any) => product.loanRequests.Name == "Waiting");
   }
+  
   async updateloanData()
   {
     for(let i=0;i<this.loanRequests.length;i++)

@@ -28,7 +28,6 @@ export class AddManufacturerComponent implements OnInit {
     {
       for(let i=0;i<this.manufacturers.length;i++)
     {
-      alert("Checking")
         if(this.name != this.manufacturers[i].name)
         {
           if(this.email != this.manufacturers[i].email)

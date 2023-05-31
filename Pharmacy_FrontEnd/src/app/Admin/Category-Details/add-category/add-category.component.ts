@@ -25,10 +25,9 @@ export class AddCategoryComponent implements OnInit {
       Name:this.name,
       Category:this.category
     }
-    alert(this.user.Category)
     this.result=await lastValueFrom(this.LookupService.registerCategoryApi(this.user))
-    if(this.result){
-      alert("User is registered successfully")
+    if(this.result.length>0){
+      alert("Category Added successfully")
     }
     else{
       alert("Ooops Error")

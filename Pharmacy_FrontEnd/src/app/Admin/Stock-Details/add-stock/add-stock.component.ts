@@ -36,18 +36,19 @@ export class AddStockComponent implements OnInit {
     if(this.products.length > 0 )
     {
       for(let i=0;i<this.products.length;i++)
-    {      
-        if(this.name != this.products[i].name || this.category != this.products[i].category._id || this.strength != this.products[i].strength && this.manufacturerName == this.products[i].manufacturerName &&this.pharmacyId == this.products[i].pharmacyId)
+    {
+      if(this.name == this.products[i].name && this.category == this.products[i].category._id && this.strength == this.products[i].strength && this.manufacturerName == this.products[i].manufacturerName &&this.pharmacyId == this.products[i].pharmacyId)
+      {
+        alert("Product already exists");
+        this.isTrue = false;
+        break;
+      }      
+      else
         {
           this.isTrue = true;
 
         }
-        else if(this.name == this.products[i].name && this.category == this.products[i].category._id && this.strength == this.products[i].strength && this.manufacturerName == this.products[i].manufacturerName &&this.pharmacyId == this.products[i].pharmacyId)
-        {
-          alert("Product already exists");
-          this.isTrue = false;
-          break;
-        }
+     
       
     }
     if(this.isTrue == true)
@@ -71,16 +72,6 @@ export class AddStockComponent implements OnInit {
         this.getProducts();
   
       }
-    }
-    
-    else{
-      alert("Invalid input. Try Again")
-      this.name = "",
-      this.category = "",
-      this.strength = "",
-      this.description = "",
-      this.manufacturerName = "",
-      this.getProducts();
     }
     }
     else if(this.products.length == 0)

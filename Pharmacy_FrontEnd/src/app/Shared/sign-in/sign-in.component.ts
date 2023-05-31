@@ -24,16 +24,36 @@ export class SignInComponent implements OnInit {
       password: this.password
     }
     this.loggedInUser = await lastValueFrom(this.signInService.findUserLogin(this.credentials))
-    if(this.loggedInUser.length>0)
+    if(this.loggedInUser[0].Name == "Head")
     {
-      alert("User is registered successfully")
+      alert("Login successfully")
       this.signInService.setLoginUser(this.loggedInUser);
       this.getUser = this.signInService.getLoginUser();      
       this.router.navigate(['/Owner'])
+      // this.router.navigate(['/Admin'])
+      // this.router.navigate(['/Customer'])
     }
-    else
+    else if(this.loggedInUser[0].Designation == "63819532edac971f8fb5be61")
     {
-      alert("Oops not login");
+      alert("Login successfully")
+      this.signInService.setLoginUser(this.loggedInUser);
+      this.getUser = this.signInService.getLoginUser();      
+      // this.router.navigate(['/Owner'])
+      // this.router.navigate(['/Admin'])
+      this.router.navigate(['/Customer'])
+    } 
+    else if(this.loggedInUser[0].Designation == "638064007111d62fbbe508ae")
+    {
+      alert("Login successfully")
+      this.signInService.setLoginUser(this.loggedInUser);
+      this.getUser = this.signInService.getLoginUser();      
+      // this.router.navigate(['/Owner'])
+      this.router.navigate(['/Admin'])
+      // this.router.navigate(['/Customer'])
+    }
+    else 
+    {
+      alert("Invalid username or password");
     }
   }
 

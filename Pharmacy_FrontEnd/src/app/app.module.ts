@@ -31,6 +31,10 @@ import { StockDetailsComponent } from './Admin/Stock-Details/stock-details/stock
 import { OwnerSidebarComponent } from './Owner/ownerSidebar/owner-sidebar/owner-sidebar.component';
 import { AdminDashboardComponent } from './Owner/ownerSidebar/admin-dashboard/admin-dashboard.component';
 import { ShowStockComponent } from './Employee/show-stock/show-stock.component';
+import { AdminSidebarComponent } from './Admin/Admin-Sidebar/admin-sidebar/admin-sidebar.component';
+import { AdDasboardComponent } from './Admin/Admin-Sidebar/ad-dasboard/ad-dasboard.component';
+import { CustomerSidebarComponent } from './Employee/customer-sidebar/customer-sidebar/customer-sidebar.component';
+import { CustomerDashboardComponent } from './Employee/customer-sidebar/customer-dashboard/customer-dashboard.component';
 
 
 @NgModule({
@@ -64,7 +68,11 @@ import { ShowStockComponent } from './Employee/show-stock/show-stock.component';
     StockDetailsComponent,
     OwnerSidebarComponent,
     AdminDashboardComponent,
-    ShowStockComponent
+    ShowStockComponent,
+    AdminSidebarComponent,
+    AdDasboardComponent,
+    CustomerSidebarComponent,
+    CustomerDashboardComponent
 
   ],
   imports: [

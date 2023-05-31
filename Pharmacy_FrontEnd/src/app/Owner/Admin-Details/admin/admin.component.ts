@@ -60,46 +60,81 @@ export class AdminComponent implements OnInit {
     if(this.getUsers.length > 0)
     {
       for(let i=0;i<this.getUsers.length;i++)
-    {
-      
-      if(this.Designation != this.getUsers[i].Designation._id && this.PharmacyId != this.getUsers[i].PharmacyId)
       {
-        if(this.CNIC != this.getUsers[i].CNIC && this.PharmacyId != this.getUsers[i].PharmacyId)
+        if(this.Designation == this.getUsers[i].Designation._id && this.PharmacyId == this.getUsers[i].PharmacyId)
         {
-          if(this.Email != this.getUsers[i].Email && this.PharmacyId != this.getUsers[i].PharmacyId)
-          {
-            if(this.ContactNumber != this.getUsers[i].ContactNumber && this.PharmacyId != this.getUsers[i].PharmacyId)
-            {
-              this.isTrue = true;
-              
-            }
-            else if(this.ContactNumber == this.getUsers[i].ContactNumber && this.PharmacyId == this.getUsers[i].PharmacyId) 
-            {
-              alert("Contact Number already exists");
-              this.isTrue = false;
-              break;
-            }
-          }
-          else if(this.Email == this.getUsers[i].Email && this.PharmacyId == this.getUsers[i].PharmacyId)
-          {
-            alert("Email already exists");
-            this.isTrue = false;
-            break;
-          }
-
+          alert("Admin already exists");
+          this.isTrue = false;
+          break;
         }
-        else if(this.CNIC == this.getUsers[i].CNIC && this.PharmacyId == this.getUsers[i].PharmacyId){
+        else
+        {
+          this.isTrue = true;
+        }
+        if(this.Email == this.getUsers[i].Email)
+        {
+          alert("Email already exists");
+          this.isTrue = false;
+          break;
+        }
+        else
+        {
+          this.isTrue = true;
+        }
+        if(this.CNIC == this.getUsers[i].CNIC)
+        {
           alert("CNIC already exists");
           this.isTrue = false;
           break;
         }
-      }
-      else if(this.Designation == this.getUsers[i].Designation._id && this.PharmacyId == this.getUsers[i].PharmacyId)
-      {
-        alert("Admin already exists");
-        this.isTrue = false;
-        break;
-      }
+        else
+        {
+          this.isTrue = true;
+        }
+        if(this.ContactNumber == this.getUsers[i].ContactNumber)
+        {
+          alert("Contact Number already exists");
+          this.isTrue = false;
+          break;
+        }
+        else
+        {
+          this.isTrue = true;
+        }
+      // alert(this.CNIC + " " + this.getUsers[i].CNIC + " " +  this.PharmacyId + " " + this.getUsers[i].PharmacyId)
+      // alert(this.Email + " " + this.getUsers[i].Email + " " +  this.PharmacyId + " " + this.getUsers[i].PharmacyId)
+      // alert(this.ContactNumber + " " + this.getUsers[i].ContactNumber + " " +  this.PharmacyId + " " + this.getUsers[i].PharmacyId)
+      // alert("hatam")
+      // if(this.CNIC != this.getUsers[i].CNIC && this.PharmacyId != this.getUsers[i].PharmacyId)
+      //   {
+      //     if(this.Email != this.getUsers[i].Email && this.PharmacyId != this.getUsers[i].PharmacyId)
+      //     {
+      //       if(this.ContactNumber != this.getUsers[i].ContactNumber && this.PharmacyId != this.getUsers[i].PharmacyId)
+      //       {
+      //         this.isTrue = true;
+      //       }
+      //       else if (this.ContactNumber == this.getUsers[i].ContactNumber && this.PharmacyId == this.getUsers[i].PharmacyId)
+      //       {
+      //         alert("Contact Number already exists");
+      //         this.isTrue = false;
+      //         break;
+      //       }
+      //     }
+      //     else if (this.Email == this.getUsers[i].Email && this.PharmacyId == this.getUsers[i].PharmacyId)
+      //     {
+      //       alert("Email already exists");
+      //       this.isTrue = false;
+      //       break;
+      //     }
+
+      //   }
+      //   else if(this.CNIC == this.getUsers[i].CNIC && this.PharmacyId == this.getUsers[i].PharmacyId)
+      //   {
+      //     alert("CNIC already exists");
+      //     this.isTrue = false;
+      //     break;
+      //   }
+      
     }
     if(this.isTrue == true && parseInt(this.Salary) >= 0 && this.DateOfBirth < this.HireDate)
     {
@@ -146,7 +181,7 @@ export class AdminComponent implements OnInit {
       alert('Enter valid input');
     }
     }
-    else if(this.getUsers.length == 0)
+    else if(this.AdminData.length == 0)
     {
       if(parseInt(this.Salary) >= 0 && this.DateOfBirth < this.HireDate)
     {
