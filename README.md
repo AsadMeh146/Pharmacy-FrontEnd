@@ -3,22 +3,20 @@ Pharmacy Management System (Angular Frontend)
 This project is a Pharmacy Management System developed using Angular for the frontend. It aims to provide a comprehensive solution for managing various aspects of a pharmacy, including user roles such as Head, Admin, and Employee. The system enables efficient management of admins, pharmacies, employees, stock, manufacturers, shippers, customers, and orders.
 
 User Roles
-1. Head
+1. Head :-
 The Head role has the highest level of authority in the system. The Head is responsible for managing admins, pharmacies, and employee loans. They have access to all functionalities and can perform the following tasks:
-
 Add, edit, and remove admins
 Add, edit, and remove pharmacies
 Manage employee loans
 
-2. Admin
+2. Admin:-
 The Admin role focuses on managing employees, stock, manufacturers, and shippers. Admins have access to the following functionalities:
-
 Add, edit, and remove employees
 Manage employee details such as personal information, roles, and permissions
 Handle stock management, including adding and updating stock information
 Manage manufacturers and their shippers, including adding, editing, and removing details
 
-3. Employee
+3. Employee:-
 The Employee role is primarily responsible for managing customers and their orders. Employees have the following capabilities:
 
 Add, edit, and remove customers
