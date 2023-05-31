@@ -24,10 +24,15 @@ Manage customer information, including personal details and contact information
 Features:-
 
 This Pharmacy Management System offers the following features:
+
 User Authentication: The system provides secure user authentication and authorization, ensuring that each user can access only the functionalities assigned to their respective roles.
+
 Stock Management: The system provides functionality to manage the pharmacy's stock efficiently, including adding new stock items, updating stock levels, and monitoring inventory.
+
 Manufacturer and Shipper Management: Admin users can add, edit, and remove manufacturers and their associated shippers. This feature helps in maintaining accurate information about suppliers and ensuring smooth operations.
+
 Loan Management: The Head user has the ability to manage employee loans, including approving, rejecting, and tracking loan requests.
+
 Order Management: Employees can process customer orders, update order statuses, and manage order-related tasks, such as cancellations and returns.
 
 Installation
