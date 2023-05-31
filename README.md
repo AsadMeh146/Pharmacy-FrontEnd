@@ -41,19 +41,16 @@ Installation
 To set up the Pharmacy Management System locally, follow these steps:
 
 Clone the repository from GitHub:
-bash
-Copy code
+
 git clone https://github.com/AsadMeh146/Pharmacy-FrontEnd.git
 
 Install the necessary dependencies:
-bash
+
 npm install
 Configure the backend: Please refer to the README file of the backend repository for instructions on setting up the server-side of the application.
 
 Run the application:
 
-bash
-Copy code
 ng serve
 
 Access the application in your web browser at http://localhost:4200.
