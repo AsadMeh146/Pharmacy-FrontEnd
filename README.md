@@ -25,7 +25,7 @@ Features:-
 
 This Pharmacy Management System offers the following features:
 
-User Authentication: The system provides secure user authentication and authorization, ensuring that each user can access only the functionalities assigned to their respective roles.
+Employee Management: The system provides funcionality to manage the admins, other employees of the pharmacies including adding, updating and deleting the employees.
 
 Stock Management: The system provides functionality to manage the pharmacy's stock efficiently, including adding new stock items, updating stock levels, and monitoring inventory.
 
