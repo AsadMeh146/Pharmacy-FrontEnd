@@ -14,12 +14,6 @@ class login_user{
         }
         return this.instance_variable
     }
-    // public setEmail(email:string){
-    //     this.login_email = email;
-    // }
-    // public getEmail(){
-    //     return this.login_email;
-    // }
 
 }
 

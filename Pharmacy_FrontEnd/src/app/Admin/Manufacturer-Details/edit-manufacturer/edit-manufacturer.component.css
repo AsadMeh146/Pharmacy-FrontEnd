@@ -12,14 +12,7 @@
     border-radius: 10px;
     text-align: left;
     padding-top: 20px;
-    /* background-image: url('assets/Images/images.jpg'); */
-    /* background-image: url("/assets/Images/images.jpg");
-    background-color: #cccccc;
-    height: 500px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative; */
+
 }
 .myRow{
     display: flex;

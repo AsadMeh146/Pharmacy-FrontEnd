@@ -10,66 +10,80 @@ import { ManufacturerService } from 'src/app/Services/Admin/Manufacturer-Service
 })
 export class AddManufacturerComponent implements OnInit {
 
-  constructor(public ManufacturerService:ManufacturerService,private router:Router) { }
-  user:any
-  result:any
-  public name=""
-  public email=""
-  public address=""
-  public contact=""
-  manufacturers:any
+  constructor(public ManufacturerService: ManufacturerService, private router: Router) { }
+  user: any
+  result: any
+  public name = ""
+  public email = ""
+  public address = ""
+  public contact = ""
+  manufacturers: any
   isTrue = false;
 
-  async getManufaturers(){
-    this.manufacturers=await lastValueFrom(this.ManufacturerService.getManufacturerApi())
+  async getManufaturers() {
+    this.manufacturers = await lastValueFrom(this.ManufacturerService.getManufacturerApi())
   }
-  async handleSubmit(){
-    if(this.manufacturers.length > 0)
-    {
-      for(let i=0;i<this.manufacturers.length;i++)
-    {
-        if(this.name != this.manufacturers[i].name)
-        {
-          if(this.email != this.manufacturers[i].email)
-          {
-            if(this.contact != this.manufacturers[i].contact)
-            {
+  async handleSubmit() {
+    if (this.manufacturers.length > 0) {
+      for (let i = 0; i < this.manufacturers.length; i++) {
+        if (this.name != this.manufacturers[i].name) {
+          if (this.email != this.manufacturers[i].email) {
+            if (this.contact != this.manufacturers[i].contact) {
               this.isTrue = true;
-              
+
             }
-            else
-            {
+            else {
               alert("Contact Number already exists");
               this.isTrue = false;
               break;
             }
           }
-          else
-          {
+          else {
             alert("Email already exists");
             this.isTrue = false;
             break;
           }
 
         }
-        else
-        {
+        else {
           alert("Manufacturer already exists");
           this.isTrue = false;
           break;
         }
-      
-    }
-    if(this.isTrue == true)
-    {
-      this.user={
-        name:this.name,
-        email:this.email,
-        address:this.address,
-        contact:this.contact
+
       }
-      this.result=await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
-      if(this.result){
+      if (this.isTrue == true) {
+        this.user = {
+          name: this.name,
+          email: this.email,
+          address: this.address,
+          contact: this.contact
+        }
+        this.result = await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
+        if (this.result) {
+          alert("User is registered successfully")
+          this.name = "";
+          this.email = "";
+          this.address = "";
+          this.contact = "";
+          this.getManufaturers();
+
+        }
+        else {
+          alert("Invalid input. Try Again")
+        }
+      }
+
+    }
+    else if (this.manufacturers.length == 0) {
+      this.user = {
+        name: this.name,
+        email: this.email,
+        address: this.address,
+        contact: this.contact
+      }
+      this.result = await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
+      if (this.result) {
         alert("User is registered successfully")
         this.name = "";
         this.email = "";
@@ -78,39 +92,11 @@ export class AddManufacturerComponent implements OnInit {
         this.getManufaturers();
 
       }
-      else{
+      else {
         alert("Invalid input. Try Again")
       }
     }
-
-    }
-    else if(this.manufacturers.length == 0)
-    {
-      this.user={
-        name:this.name,
-        email:this.email,
-        address:this.address,
-        contact:this.contact
-      }
-      this.result=await lastValueFrom(this.ManufacturerService.registerManufacturerApi(this.user))
-      if(this.result){
-        alert("User is registered successfully")
-        this.name = "";
-        this.email = "";
-        this.address = "";
-        this.contact = "";
-        this.getManufaturers();
-
-      }
-      else{
-        alert("Invalid input. Try Again")
-      }
-    }
-    
-    
-    
   }
-
   ngOnInit(): void {
     this.getManufaturers();
   }

@@ -85,7 +85,7 @@ export class EditStockComponent implements OnInit {
     (<HTMLInputElement>document.getElementById('Inputname')).value = productName;
     (<HTMLInputElement>document.getElementById('Inputstrength')).value = productStrength;
     (<HTMLInputElement>document.getElementById('Inputdescription')).value = productDescription;
-    // this.pharmacyId = pharmacyId;
+
   }
 
   ngOnInit(): void {
